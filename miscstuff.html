@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<title>Misc. stuff</title>
+<style type="text/css">
+.codebox {
+    height: 1px;
+    min-height: 1px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 0 1em;
+    width: 40%;
+    padding-bottom: 10px;
+    display: inline-block;
+    padding: 0.75em;
+    padding-top: 0;
+    height: 32em;
+    overflow: auto;
+    overflow-y: auto;
+    background-color: #f1f1f1;
+    border-color: #aca899 #fff #fff #aca899;
+}
+</style>
+</head>
+
+<body bgcolor="#E6E6FA">
+<!-- I don't know how to HTML -->
+<h2>Freelook LUA script for DeSmuME</h2>
+<div class="codebox"><pre><code>--Configure the keyboard controls below
+forwardsKey = "U";  --These keys move the camera forward, backward, left, right, up, down
+backwardsKey = "J"; --^^^
+leftKey = "H";      --^^^
+rightKey = "K";     --^^^
+upKey = "T";        --^^^
+downKey = "G";      --^^^
+rotateUpKey = "numpad8";     --These keys rotate the camera
+rotateDownKey = "numpad5";   --^^^
+rotateLeftKey = "numpad4";  --^^^
+rotateRightKey = "numpad6";  --^^^
+pitchOffsetKey = "Y"; --Sets the pitch offset to correct for unwanted roll. Aim at the horizon and press to set it.
+resetKey = "L"; --Resets everything
+movScaleDownKey = "numpad0"; --Adjusts movement scaling down
+movScaleUpKey = "numpad1";   --Adjusts movement scaling up
+rotScaleDownKey = "numpad2"; --Adjusts rotation scaling down
+rotScaleUpKey = "numpad3";   --Adjusts rotation scaling up
+scaleMultDownKey = "numpad7"; --Makes the scale adjustment keys 10x less effective
+scaleMultUpKey = "numpad9";   --Makes the scale adjustment keys 10x more effective
+mouseAimButton = "rightclick"; --Button for mouse aiming. May be leftclick, rightclick, middleclick or a keyboard key
+
+
+
+--Gamepad controls assume you have an Xbox style controller
+
+--  Left stick moves left/right and forward/back
+--  Right stick rotates
+--  Triggers move up down
+--  
+--  A button resets position, rotation, and pitch offset
+--  B button resets rotation and pitch offset
+--  X sets pitch offset
+--  Y resets the movement and rotation scale
+--  
+--  Dpad Up/Down adjusts the movement scale
+--  Dpad Left/Right adjusts the rotation scale
+--  Hold the left or right bumpers to make smaller or bigger changes to the scales
+--  
+--  Setting the pitch offset is important. Without doing so, your view will roll around as you look left and right in most games.
+--  Angle your view towards the "horizon" and rotate the camera 90 degrees to the left or right. Then hold X and adjust up/down a little until everything's level.
+
+joyID = -1; --Controller ID to use. The script will attempt to find a suitable controller, but you can manually set this if you wish
+yaw = 0.0;
+pitch = 0.0;
+pitchoffs = 0.0; --used to correct for the initial pitch of the camera
+xpos = 0.0; --coordinates in a virtual 3D space
+ypos = 0.0; --^^^
+zpos = 0.0; --^^^
+matAdjustment = {1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1};
+movscale = 1.0;
+rotscale = 1.0;
+cooldown = 0;
+
+function MatrixMult4x4(m1, m2) --sorta copied/inspired from some lua matrix library
+    local mtx = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    for i=1,4 do
+        for j=1,4 do
+            local num = 0
+            for n=1,4 do
+                num = num + m1[(i-1)*4+n] * m2[(n-1)*4+j]
+            mtx[(i-1)*4+j] = num
+            end
+        end
+    end
+    return mtx;
+end
+
+function Rotate(angle,x,y,z)
+    local s = math.sin(math.rad(angle));
+    local c = math.cos(math.rad(angle));
+    return {(1-c)*x*x+c, (1-c)*y*x-s*z, (1-c)*z*x+s*y, 0,
+            (1-c)*x*y+s*z, (1-c)*y*y+c, (1-c)*z*y-s*x, 0,
+            (1-c)*x*z-s*y, (1-c)*y*z+s*x, (1-c)*z*z+c, 0,
+            0, 0, 0, 1};
+end
+
+function vecrotx(angle, vx, vy, vz) --used for pitch correction in the functions below
+    return vx,
+            vy * math.cos(math.rad(angle)) - vz * math.sin(math.rad(angle)),
+            vy * math.sin(math.rad(angle)) + vz * math.cos(math.rad(angle));
+end
+
+function ApplyMovement(fX, fY, fZ, l)
+    fX, fY, fZ = vecrotx(pitchoffs, fX, fY, fZ);
+    
+    local mag = math.sqrt(fX*fX + fY*fY + fZ*fZ);
+    fX = fX / mag; fY = fY / mag; fZ = fZ / mag;
+    fX = fX * l; fY = fY * l; fZ = fZ * l;
+    xpos = xpos + fX; ypos = ypos + fY; zpos = zpos + fZ;
+end
+
+function MoveForward(l) --sorta based off https://www.gamedev.net/forums/topic/415144-get-forward-right-up-vectors-from-pitch-yaw-roll/
+    local fX = math.sin(math.rad(yaw)) * math.cos(math.rad(pitch+pitchoffs));
+    local fY = -math.sin(math.rad(pitch+pitchoffs));
+    local fZ = -math.cos(math.rad(yaw)) * math.cos(math.rad(pitch+pitchoffs));
+    
+    ApplyMovement(fX, fY, fZ, l);
+end
+
+function MoveUp(l)
+    local fX = math.sin(math.rad(yaw)) * math.cos(math.rad(pitchoffs+90));
+    local fY = -math.sin(math.rad(pitchoffs+90));
+    local fZ = -math.cos(math.rad(yaw)) * math.cos(math.rad(pitchoffs+90));
+    
+    ApplyMovement(fX, fY, fZ, l);
+end
+
+function MoveRight(l)
+    local fX = math.sin(math.rad(yaw+90));
+    local fY = 0;
+    local fZ = -math.cos(math.rad(yaw+90));
+    
+    ApplyMovement(fX, fY, fZ, l);
+end
+
+function on3d()
+    emu.set3dtransform(2,matAdjustment);
+end
+emu.register3devent(on3d);
+emu.set3dtransform(1,nil);
+
+if joyID == -1 then
+    for i = 0, 15 do
+        c = controller.get(i);
+        if c.x and c.y and c.z and c.u and c.r then --simple check that only looks for all the needed axes
+            joyID = i;
+            print("Found suitable controller, id " .. i);
+            break;
+        end
+    end
+else
+    print("Using manually set controller, id " .. joyID);
+end
+if joyID == -1 then
+    print("No suitable controller found!");
+end
+
+while true do
+    if joyID ~= -1 then
+        local joy = controller.get(joyID)
+        
+        scalemult = 1;
+        if joy["5"] then --Left bumper
+            scalemult = 0.1;
+        elseif joy["6"] then --Right bumper
+            scalemult = 10;
+        end
+        if joy.up and cooldown==0 then --Dpad
+            cooldown = 10;
+            movscale = movscale + (0.1 * scalemult);
+            print("Movement scale: " .. movscale);
+        end
+        if joy.down and cooldown==0 then --Dpad
+            cooldown = 10;
+            movscale = movscale - (0.1 * scalemult);
+            print("Movement scale: " .. movscale);
+        end
+        if joy.right and cooldown==0 then --Dpad
+            cooldown = 10;
+            rotscale = rotscale + (0.1 * scalemult);
+            print("Rotation scale: " .. rotscale);
+        end
+        if joy.left and cooldown==0 then --Dpad
+            cooldown = 10;
+            rotscale = rotscale - (0.1 * scalemult);
+            print("Rotation scale: " .. rotscale);
+        end
+        
+        if(math.abs(joy.x)>0.25) then --Left Stick
+            MoveRight(-joy.x * movscale);
+        end
+        if(math.abs(joy.y)>0.25) then --Left Stick
+            MoveForward(joy.y * movscale);
+        end
+        if(math.abs(joy.z)>0.25) then --Triggers
+            MoveUp(-joy.z * movscale);
+        end
+        if(math.abs(joy.u)>0.25) then --Right Stick
+            yaw = (yaw + (joy.u * rotscale)) % 360;
+        end
+        if(math.abs(joy.r)>0.25) then --Right Stick
+            pitch = (pitch + (joy.r * rotscale)) % 360;
+        end
+        
+        if joy["1"] and cooldown==0 then --A button
+            cooldown = 20;
+            yaw = 0.0;
+            pitch = 0.0;
+            pitchoffs = 0.0;
+            xpos = 0.0;
+            ypos = 0.0;
+            zpos = 0.0;
+            movscale = 1.0;
+            rotscale = 1.0;
+            print("Reset everything");
+        end
+        if joy["2"] and cooldown==0 then --B button
+            cooldown = 20;
+            yaw = 0.0;
+            pitch = 0.0;
+            pitchoffs = 0.0;
+            print("Reset rotations");
+        end
+        if joy["3"] then --X button
+            pitchoffs = -pitch;
+        end
+        if joy["4"] and cooldown==0 then --Y button
+            cooldown = 20;
+            movscale = 1.0;
+            rotscale = 1.0;
+            print("Movement/rotation scales reset");
+        end
+        if joy["8"] and cooldown==0 then --Start
+            cooldown = 20;
+            print(string.format("X,Y,Z = {%.4f, %.4f, %.4f}", xpos, ypos, zpos));
+            print(string.format("yaw,pitch = {%.4f, %.4f}", yaw, pitch));
+            print(string.format("pitch offset = %.4f", pitchoffs));
+        end
+    end
+    
+    
+    --Ugly duplicated code for keyboard input
+    keys = input.get()
+    scalemult = 1;
+    if keys[scaleMultDownKey] then
+        scalemult = 0.1;
+    elseif keys[scaleMultUpKey] then
+        scalemult = 10;
+    end
+    if keys[movScaleUpKey] and cooldown==0 then --Dpad
+        cooldown = 10;
+        movscale = movscale + (0.1 * scalemult);
+        print("Movement scale: " .. movscale);
+    end
+    if keys[movScaleDownKey] and cooldown==0 then --Dpad
+        cooldown = 10;
+        movscale = movscale - (0.1 * scalemult);
+        print("Movement scale: " .. movscale);
+    end
+    if keys[rotScaleUpKey] and cooldown==0 then --Dpad
+        cooldown = 10;
+        rotscale = rotscale + (0.1 * scalemult);
+        print("Rotation scale: " .. rotscale);
+    end
+    if keys[rotScaleDownKey] and cooldown==0 then --Dpad
+        cooldown = 10;
+        rotscale = rotscale - (0.1 * scalemult);
+        print("Rotation scale: " .. rotscale);
+    end
+    
+    if keys[forwardsKey] then
+        MoveForward(-1 * movscale);
+    end
+    if keys[backwardsKey] then
+        MoveForward(1 * movscale);
+    end
+    if keys[leftKey] then
+        MoveRight(1 * movscale);
+    end
+    if keys[rightKey] then
+        MoveRight(-1 * movscale);
+    end
+    if keys[upKey] then
+        MoveUp(1 * movscale);
+    end
+    if keys[downKey] then
+        MoveUp(-1 * movscale);
+    end
+    if keys[rotateUpKey] then
+        pitch = (pitch - 1 * rotscale) % 360;
+    end
+    if keys[rotateDownKey] then
+        pitch = (pitch + 1 * rotscale) % 360;
+    end
+    if keys[rotateLeftKey] then
+        yaw = (yaw - 1 * rotscale) % 360;
+    end
+    if keys[rotateRightKey] then
+        yaw = (yaw + 1 * rotscale) % 360;
+    end
+    if keys[pitchOffsetKey] then
+        pitchoffs = -pitch;
+    end
+    if keys[resetKey] and cooldown==0 then
+        cooldown = 20;
+        yaw = 0.0;
+        pitch = 0.0;
+        pitchoffs = 0.0;
+        xpos = 0.0;
+        ypos = 0.0;
+        zpos = 0.0;
+        movscale = 1.0;
+        rotscale = 1.0;
+        print("Reset everything");
+    end
+    
+    --Mouse aiming
+    if keys[mouseAimButton] then
+        if keys.xmouse and keys.ymouse then
+            tmpX = (keys.xmouse - 128) / 128;
+            tmpY = (keys.ymouse - 96) / 96;
+            yaw = (yaw + tmpX * rotscale) % 360;
+            pitch = (pitch + tmpY * rotscale) % 360;
+        end
+    end
+    
+    
+    local tmp = Rotate(-yaw, 0.0, math.cos(math.rad(pitchoffs)), math.sin(math.rad(pitchoffs))); --roll correction magic sauce
+    tmp = MatrixMult4x4(tmp, Rotate(-pitch, 1.0, 0.0, 0.0));
+    local translation = {1,0,0,0,0,1,0,0,0,0,1,0,xpos,ypos,zpos,1};
+    matAdjustment = MatrixMult4x4(translation, tmp);
+    
+    if cooldown>0 then cooldown=cooldown-1 end
+    emu.frameadvance();
+end
+</code></pre></div>
+<video controls autoplay loop><source src="freelook.webm" type="video/webm" /></video>
+<br/><br/><br/>
+<h2>Action Replay code for Picross 3D (USA) to remove jitter</h2>
+<div class="codebox" style="height: auto; width: 25%;"><pre><code>0208B5B0 E3A00000</code></pre></div>
+<br/><br/><br/>
+<h2>LUA script for DeSmuME to check controller ID and buttons</h2>
+<div class="codebox"><pre><code>dpad = {"up", "down", "left", "right"}
+sticks = {"x", "y", "z", "r", "u", "v"}
+
+function showControllers()
+    gui.box(0, 0, 256, 192, "#808080")
+    gui.box(0, -192, 256, 0, "#808080")
+    for i=0,15 do
+        cont = controller.get(i)
+        if type(next(cont)) ~= "nil" then
+            gui.text(0, (18*i)-143, i)
+            xoffs = 14
+            for ii=0,32 do
+                col = "#606060"
+                tmp = tostring(ii)
+                if cont[tmp] ~= nil then
+                    if cont[tmp] == true then col = "#FF0000" end
+                    gui.text(xoffs, (18*i)-143, tmp, col) --goes off screen if controller has more than ~20 buttons.
+                    xoffs = xoffs + string.len(tmp)*6 + 2
+                end
+            end
+            xoffs = 14
+            for idx, name in ipairs(dpad) do
+                col = "#606060"
+                if cont[name] ~= nil then
+                    if cont[name] == true then col = "#FF0000" end
+                    gui.text(xoffs, (18*i)-143+9, name, col)
+                    xoffs = xoffs + string.len(name)*6 + 4
+                end
+            end
+            for idx, name in ipairs(sticks) do
+                col = "#606060"
+                if cont[name] ~= nil then
+                    if math.abs(cont[name]) > 0.25 then col = "#FF0000" end
+                    gui.text(xoffs, (18*i)-143+9, name, col)
+                    xoffs = xoffs + string.len(name)*6 + 2
+                end
+            end
+        end
+    end
+end
+gui.register(showControllers)</code></pre></div>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAGABAMAAACw7KGNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPUExURQAAAGBgYICAgP8AAP///79t+3QAAANjSURBVHja7dhLbhsxEIThajoHaN6gUScQoAtkkfufKYvmjGZiI7FkKd78BoQWaT0+kcN2yfI3/wgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8O2A0ug7w7Vukixpv7/NW2MVn0arSDqU7XX/CdAv2XbFsKasqxxKx0xraq+acsVYpWIcRquE0hUjZm6TnwL80E/brjkcSr/p0gA1RMo1Ttccq9Qch9GfRdvoLkAMS2ntgOGQ7NANsH/KbQV6pNPvQqPLfSvgGK6Q69rLHlOOXtq1BWn3mziGY9gxKmTHqCm7194xYhvdD1AOS5e1EutT59i34h1A2aUnz+X+LZBD8psudt0ASh+2QKtUqEc6TLrSFdLtkXedgrmu/Kvs6i3QlEO+nYKZq9RM18zosiZda3J/5D19oA5n3yVr6wnDex8oaS9ySf2EbdK1JvdHPtQJS+8H0mm2m9arWnHlu0FFbrP9vjHOD3sGQL12dmVJqh5VujQqpRy2NCpd0joxe8/uW/ftRwGhjCm7lJrKWqO0ppQj5rBjqmTNDPXEmy7dOrfGofwSQOl++cw1qmzZOvHKbWItybXP7bFffxXQNfMGmKkclbZDWgD1RbEDpvY/Hl/dgn75GYcVUHVDXNder1Hl2gJdL/3mvUSPX4QzQ8PWTE0dtkAzK12xA6pXIDbAdg30kx8G9LXt1WVUkuTVWkpeCcQl15SknpD8dl2nYHQ3ux+wJyLpL4no2JzGuZePr/WB+jFOiWh+nIhemAl/jWMiut3OieiFgMMKnCLYORG9MJY3YE9E8+NE9F8AnYjyw0T0yi3QMRHtx/+PRPTKi/DnKRHNjxPRK78Z6TOJ6P99NyQRPZKIngF4KBHFE9rk1xLR1NMB9yWiJwPuTkShfCiEPC0R7d9anwB4OBHF1LP6wCf73bMTEf+mAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIDvBvwGPLnjLbZ/538AAAAASUVORK5CYII=">
+</body>
+</html>
