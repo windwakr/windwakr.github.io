@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS Tekuteku Diary Password Generator</title>
+    <link href="./tailwind.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-4 text-center">DS Tekuteku Diary Password Generator</h1>
+        <div class="space-y-4">
+            <div>
+                <label for="steps" class="block text-sm font-medium text-gray-700">Steps (0-1,048,575):</label>
+                <input type="number" id="steps" min="0" max="1048575" value="0" class="mt-1 block w-full p-2 border rounded-md" required>
+            </div>
+            <div>
+                <label for="date" class="block text-sm font-medium text-gray-700">Date (2000-01-01 to 2089-09-17):</label>
+                <input type="date" id="date" min="2000-01-01" max="2089-09-17" class="mt-1 block w-full p-2 border rounded-md" required>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label for="unk2_7" class="block text-sm font-medium text-gray-700">unk2_7 (0-1):</label>
+                    <input type="number" id="unk2_7" min="0" max="1" value="1" class="mt-1 block w-full p-2 border rounded-md">
+                </div>
+                <div>
+                    <label for="unk2_6" class="block text-sm font-medium text-gray-700">unk2_6 (0-1):</label>
+                    <input type="number" id="unk2_6" min="0" max="1" value="0" class="mt-1 block w-full p-2 border rounded-md">
+                </div>
+                <div>
+                    <label for="unk2_5" class="block text-sm font-medium text-gray-700">unk2_5 (0-1):</label>
+                    <input type="number" id="unk2_5" min="0" max="1" value="0" class="mt-1 block w-full p-2 border rounded-md">
+                </div>
+                <div>
+                    <label for="unk2_4" class="block text-sm font-medium text-gray-700">unk2_4 (0-1):</label>
+                    <input type="number" id="unk2_4" min="0" max="1" value="0" class="mt-1 block w-full p-2 border rounded-md">
+                </div>
+            </div>
+            <div>
+                <label for="unkthing" class="block text-sm font-medium text-gray-700">unkthing (0-63):</label>
+                <input type="number" id="unkthing" min="0" max="63" value="1" class="mt-1 block w-full p-2 border rounded-md">
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+                <div>
+                    <label for="unk5_7" class="block text-sm font-medium text-gray-700">unk5_7 (0-1):</label>
+                    <input type="number" id="unk5_7" min="0" max="1" value="0" class="mt-1 block w-full p-2 border rounded-md">
+                </div>
+                <div>
+                    <label for="unk5_6" class="block text-sm font-medium text-gray-700">unk5_6 (0-1):</label>
+                    <input type="number" id="unk5_6" min="0" max="1" value="0" class="mt-1 block w-full p-2 border rounded-md">
+                </div>
+                <div>
+                    <label for="unk5_5" class="block text-sm font-medium text-gray-700">unk5_5 (0-1):</label>
+                    <input type="number" id="unk5_5" min="0" max="1" value="0" class="mt-1 block w-full p-2 border rounded-md">
+                </div>
+            </div>
+            <div>
+                <label for="unk6" class="block text-sm font-medium text-gray-700">unk6 (0-3):</label>
+                <input type="number" id="unk6" min="0" max="3" value="0" class="mt-1 block w-full p-2 border rounded-md">
+            </div>
+            <button onclick="generatePassword()" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Generate Password</button>
+        </div>
+        <div id="output" class="mt-4 p-4 bg-gray-50 rounded-md text-center"></div>
+    </div>
+
+    <script>
+        function generatePassword() {
+            // Get input values
+            const steps = parseInt(document.getElementById('steps').value) || 0;
+            const dateStr = document.getElementById('date').value;
+            const unk2_7 = parseInt(document.getElementById('unk2_7').value) || 0;
+            const unk2_6 = parseInt(document.getElementById('unk2_6').value) || 0;
+            const unk2_5 = parseInt(document.getElementById('unk2_5').value) || 0;
+            const unk2_4 = parseInt(document.getElementById('unk2_4').value) || 0;
+            const unkthing = parseInt(document.getElementById('unkthing').value) || 0;
+            const unk5_7 = parseInt(document.getElementById('unk5_7').value) || 0;
+            const unk5_6 = parseInt(document.getElementById('unk5_6').value) || 0;
+            const unk5_5 = parseInt(document.getElementById('unk5_5').value) || 0;
+            const unk6 = parseInt(document.getElementById('unk6').value) || 0;
+
+            // Validate inputs
+            if (steps < 0 || steps > 1048575) {
+                document.getElementById('output').innerHTML = '<p class="text-red-500">Steps must be between 0 and 1,048,575.</p>';
+                return;
+            }
+            const date = new Date(dateStr);
+            const minDate = new Date('2000-01-01');
+            const maxDate = new Date('2089-09-17');
+            if (isNaN(date) || date < minDate || date > maxDate) {
+                document.getElementById('output').innerHTML = '<p class="text-red-500">Date must be between 2000-01-01 and 2089-09-17.</p>';
+                return;
+            }
+            if (unk2_7 < 0 || unk2_7 > 1 || unk2_6 < 0 || unk2_6 > 1 || unk2_5 < 0 || unk2_5 > 1 || unk2_4 < 0 || unk2_4 > 1) {
+                document.getElementById('output').innerHTML = '<p class="text-red-500">unk2 bits must be 0 or 1.</p>';
+                return;
+            }
+            if (unkthing < 0 || unkthing > 63) {
+                document.getElementById('output').innerHTML = '<p class="text-red-500">unkthing must be between 0 and 63.</p>';
+                return;
+            }
+            if (unk5_7 < 0 || unk5_7 > 1 || unk5_6 < 0 || unk5_6 > 1 || unk5_5 < 0 || unk5_5 > 1) {
+                document.getElementById('output').innerHTML = '<p class="text-red-500">unk5 bits must be 0 or 1.</p>';
+                return;
+            }
+            if (unk6 < 0 || unk6 > 3) {
+                document.getElementById('output').innerHTML = '<p class="text-red-500">unk6 must be between 0 and 3.</p>';
+                return;
+            }
+
+            // Calculate day offset
+            const day = Math.floor((date - minDate) / (1000 * 60 * 60 * 24));
+
+            // Calculate passbytes
+            const unk2_7654 = (unk2_7 << 3) | (unk2_6 << 2) | (unk2_5 << 1) | unk2_4;
+            const unk5_765 = (unk5_7 << 2) | (unk5_6 << 1) | unk5_5;
+            const passbytes = [
+                steps & 0xFF,
+                (steps >> 8) & 0xFF,
+                (unk2_7654 << 4) | (steps >> 16),
+                day & 0xFF,
+                ((day >> 8) & 0x7F) | ((unkthing & 0x1) << 7),
+                (unkthing >> 1) | (unk5_765 << 5),
+                unk6
+            ];
+
+            // Calculate checksum
+            let chk = 0;
+            for (const num of passbytes) {
+                chk = (chk + num) & 0xFF;
+            }
+
+            // Calculate dec
+            const dec = [
+                passbytes[0] & 0x1F,
+                (passbytes[0] >> 5) | ((passbytes[1] & 3) << 3),
+                (passbytes[1] >> 2) & 0x1F,
+                (passbytes[1] >> 7) | ((passbytes[2] & 0x1F) << 1),
+                (passbytes[2] >> 4) | ((passbytes[3] & 1) << 4),
+                (passbytes[3] >> 1) & 0x1F,
+                (passbytes[3] >> 6) | ((passbytes[4] & 7) << 2),
+                (passbytes[4] >> 3) & 0x1F,
+                passbytes[5] & 0x1F,
+                (passbytes[5] >> 5) | ((passbytes[6] & 3) << 3)
+            ];
+
+            // Calculate enc
+            let cipherstate = chk;
+            const enc = [chk & 0xF, (chk >> 4) & 0xF];
+            for (const num of dec) {
+                cipherstate = (cipherstate * 0x6d + 0xa15) & 0x7FFF;
+                enc.push((num + (cipherstate & 0x1F)) & 0x1F);
+            }
+
+            // Map to hiragana
+            const charsordered = ["あ", "え", "い", "お", "う", "か", "け", "き", "こ", "く", "さ", "せ", "し", "そ", "す", "た", "て", "ち", "と", "つ", "な", "ね", "に", "の", "ぬ", "は", "へ", "ひ", "ほ", "ふ", "ま", "め"];
+            let password = '';
+            for (let i = 0; i < enc.length; i++) {
+                if (i === 6) password += '<br>';
+                password += charsordered[enc[i]] + ' ';
+            }
+
+            // Display output
+            document.getElementById('output').innerHTML = `
+                <p><strong>Date:</strong> ${dateStr}</p>
+                <p><strong>Steps:</strong> ${steps}</p>
+                <p><strong>Password:</strong></p>
+                <p class="text-lg">${password}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
