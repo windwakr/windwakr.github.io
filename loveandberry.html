@@ -1,902 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Oshare Majo Love and Berry: DS Collection / オシャレ魔女♥ラブandベリー 〜DSコレクション〜 CODE39</title>
-<style>
-    th, td {
-      border:1px solid black;
+  <meta charset="utf-8">
+  <title>Oshare Majo Love and Berry: DS Collection / オシャレ魔女♥ラブandベリー 〜DSコレクション〜 CODE39</title>
+  <style>
+    body {
+      background-color: #E6E6FA;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
     }
-    .center {
-      margin-left: auto;
-      margin-right: auto;
+
+    .container {
+      max-width: 1800px;
+      margin: 0 auto;
+      text-align: center;
     }
-    
-    .barcode {
-        user-select: all;
-        cursor: pointer;
+
+    .intro {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .card-section {
+      margin-bottom: 2rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      justify-items: center;
+      padding: 1rem;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-title {
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
     }
 
     .cardbase {
-        width: 128px;
-        height: 178px;
-        display: inline-block;
-        background: url("LoveAndBerryDSCards.png") no-repeat;
-    }
-    .card-sp014 {
-        background-position: -1152px -0px;
-    }
-    .card-sp015 {
-        background-position: -1280px -0px;
-    }
-    .card-sp016 {
-        background-position: -1408px -0px;
-    }
-    .card-sp013 {
-        background-position: -1024px -0px;
-    }
-    .card-sp003 {
-        background-position: -256px -0px;
-    }
-    .card-sp002 {
-        background-position: -128px -0px;
-    }
-    .card-sp001 {
-        background-position: -0px -0px;
-    }
-    .card-sp004 {
-        background-position: -384px -0px;
-    }
-    .card-sp005 {
-        background-position: -512px -0px;
-    }
-    .card-sp006 {
-        background-position: -640px -0px;
-    }
-    .card-sp007 {
-        background-position: -768px -0px;
-    }
-    .card-sp008 {
-        background-position: -896px -0px;
-    }
-    .card-sp017 {
-        background-position: -1536px -0px;
-    }
-    .card-hr016 {
-        background-position: -3584px -0px;
-    }
-    .card-hr026 {
-        background-position: -1024px -178px;
-    }
-    .card-hr001 {
-        background-position: -1664px -0px;
-    }
-    .card-hr503 {
-        background-position: -2944px -178px;
-    }
-    .card-hr005 {
-        background-position: -2176px -0px;
-    }
-    .card-hr504 {
-        background-position: -3072px -178px;
-    }
-    .card-hr011 {
-        background-position: -2944px -0px;
-    }
-    .card-hr017 {
-        background-position: -3712px -0px;
-    }
-    .card-hr004 {
-        background-position: -2048px -0px;
-    }
-    .card-hr007 {
-        background-position: -2432px -0px;
-    }
-    .card-hr002 {
-        background-position: -1792px -0px;
-    }
-    .card-hr008 {
-        background-position: -2560px -0px;
-    }
-    .card-hr012 {
-        background-position: -3072px -0px;
-    }
-    .card-hr013 {
-        background-position: -3200px -0px;
-    }
-    .card-hr502 {
-        background-position: -2816px -178px;
-    }
-    .card-hr027 {
-        background-position: -1152px -178px;
-    }
-    .card-hr006 {
-        background-position: -2304px -0px;
-    }
-    .card-hr003 {
-        background-position: -1920px -0px;
-    }
-    .card-hr009 {
-        background-position: -2688px -0px;
-    }
-    .card-hr505 {
-        background-position: -3200px -178px;
-    }
-    .card-hr010 {
-        background-position: -2816px -0px;
-    }
-    .card-hr022 {
-        background-position: -512px -178px;
-    }
-    .card-hr020 {
-        background-position: -256px -178px;
-    }
-    .card-hr507 {
-        background-position: -3456px -178px;
-    }
-    .card-hr015 {
-        background-position: -3456px -0px;
-    }
-    .card-hr014 {
-        background-position: -3328px -0px;
-    }
-    .card-hr021 {
-        background-position: -384px -178px;
-    }
-    .card-hr506 {
-        background-position: -3328px -178px;
-    }
-    .card-hr023 {
-        background-position: -640px -178px;
-    }
-    .card-hr019 {
-        background-position: -128px -178px;
-    }
-    .card-hr030 {
-        background-position: -1536px -178px;
-    }
-    .card-hr509 {
-        background-position: -3712px -178px;
-    }
-    .card-hr033 {
-        background-position: -1920px -178px;
-    }
-    .card-hr031 {
-        background-position: -1664px -178px;
-    }
-    .card-hr029 {
-        background-position: -1408px -178px;
-    }
-    .card-hr032 {
-        background-position: -1792px -178px;
-    }
-    .card-hr508 {
-        background-position: -3584px -178px;
-    }
-    .card-hr025 {
-        background-position: -896px -178px;
-    }
-    .card-hr028 {
-        background-position: -1280px -178px;
-    }
-    .card-hr510 {
-        background-position: -0px -356px;
-    }
-    .card-hr038 {
-        background-position: -2560px -178px;
-    }
-    .card-hr024 {
-        background-position: -768px -178px;
-    }
-    .card-hr034 {
-        background-position: -2048px -178px;
-    }
-    .card-hr511 {
-        background-position: -128px -356px;
-    }
-    .card-hr037 {
-        background-position: -2432px -178px;
-    }
-    .card-hr512 {
-        background-position: -256px -356px;
-    }
-    .card-hr036 {
-        background-position: -2304px -178px;
-    }
-    .card-hr513 {
-        background-position: -384px -356px;
-    }
-    .card-hr035 {
-        background-position: -2176px -178px;
-    }
-    .card-hr018 {
-        background-position: -0px -178px;
-    }
-    .card-hr501 {
-        background-position: -2688px -178px;
-    }
-    .card-sl003 {
-        background-position: -1408px -1068px;
-    }
-    .card-cb009 {
-        background-position: -1536px -356px;
-    }
-    .card-fb004 {
-        background-position: -2816px -712px;
-    }
-    .card-sl008 {
-        background-position: -2048px -1068px;
-    }
-    .card-cl005 {
-        background-position: -1920px -534px;
-    }
-    .card-cl004 {
-        background-position: -1792px -534px;
-    }
-    .card-cb003 {
-        background-position: -768px -356px;
-    }
-    .card-sb008 {
-        background-position: -2304px -890px;
-    }
-    .card-fb002 {
-        background-position: -2560px -712px;
-    }
-    .card-cb011 {
-        background-position: -1792px -356px;
-    }
-    .card-fl001 {
-        background-position: -0px -890px;
-    }
-    .card-sb005 {
-        background-position: -1920px -890px;
-    }
-    .card-cb006 {
-        background-position: -1152px -356px;
-    }
-    .card-cb007 {
-        background-position: -1280px -356px;
-    }
-    .card-cl007 {
-        background-position: -2176px -534px;
-    }
-    .card-cl010 {
-        background-position: -2560px -534px;
-    }
-    .card-cl009 {
-        background-position: -2432px -534px;
-    }
-    .card-sl007 {
-        background-position: -1920px -1068px;
-    }
-    .card-cl002 {
-        background-position: -1536px -534px;
-    }
-    .card-cb005 {
-        background-position: -1024px -356px;
-    }
-    .card-sl005 {
-        background-position: -1664px -1068px;
-    }
-    .card-fl002 {
-        background-position: -128px -890px;
-    }
-    .card-cl008 {
-        background-position: -2304px -534px;
-    }
-    .card-fb003 {
-        background-position: -2688px -712px;
-    }
-    .card-sb003 {
-        background-position: -1664px -890px;
-    }
-    .card-sb007 {
-        background-position: -2176px -890px;
-    }
-    .card-cb008 {
-        background-position: -1408px -356px;
-    }
-    .card-sb006 {
-        background-position: -2048px -890px;
-    }
-    .card-fl003 {
-        background-position: -256px -890px;
-    }
-    .card-cl003 {
-        background-position: -1664px -534px;
-    }
-    .card-cl011 {
-        background-position: -2688px -534px;
-    }
-    .card-sb009 {
-        background-position: -2432px -890px;
-    }
-    .card-sl006 {
-        background-position: -1792px -1068px;
-    }
-    .card-cb002 {
-        background-position: -640px -356px;
-    }
-    .card-sl002 {
-        background-position: -1280px -1068px;
-    }
-    .card-cb010 {
-        background-position: -1664px -356px;
-    }
-    .card-sl001 {
-        background-position: -1152px -1068px;
-    }
-    .card-fl004 {
-        background-position: -384px -890px;
-    }
-    .card-sb011 {
-        background-position: -2688px -890px;
-    }
-    .card-fb005 {
-        background-position: -2944px -712px;
-    }
-    .card-sl010 {
-        background-position: -2304px -1068px;
-    }
-    .card-sb010 {
-        background-position: -2560px -890px;
-    }
-    .card-sl009 {
-        background-position: -2176px -1068px;
-    }
-    .card-sl016 {
-        background-position: -3072px -1068px;
-    }
-    .card-sb018 {
-        background-position: -3584px -890px;
-    }
-    .card-cl022 {
-        background-position: -128px -712px;
-    }
-    .card-cl016 {
-        background-position: -3200px -534px;
-    }
-    .card-sb016 {
-        background-position: -3328px -890px;
-    }
-    .card-fl005 {
-        background-position: -512px -890px;
-    }
-    .card-cl017 {
-        background-position: -3328px -534px;
-    }
-    .card-cb018 {
-        background-position: -2560px -356px;
-    }
-    .card-cb017 {
-        background-position: -2432px -356px;
-    }
-    .card-cb021 {
-        background-position: -2944px -356px;
-    }
-    .card-cl020 {
-        background-position: -3712px -534px;
-    }
-    .card-sl013 {
-        background-position: -2688px -1068px;
-    }
-    .card-cb016 {
-        background-position: -2304px -356px;
-    }
-    .card-sb017 {
-        background-position: -3456px -890px;
-    }
-    .card-sl015 {
-        background-position: -2944px -1068px;
-    }
-    .card-fb006 {
-        background-position: -3072px -712px;
-    }
-    .card-cl013 {
-        background-position: -2944px -534px;
-    }
-    .card-cb015 {
-        background-position: -2176px -356px;
-    }
-    .card-sb013 {
-        background-position: -2944px -890px;
-    }
-    .card-sb004 {
-        background-position: -1792px -890px;
-    }
-    .card-sl014 {
-        background-position: -2816px -1068px;
-    }
-    .card-cb013 {
-        background-position: -2048px -356px;
-    }
-    .card-cl014 {
-        background-position: -3072px -534px;
-    }
-    .card-cb012 {
-        background-position: -1920px -356px;
-    }
-    .card-fl006 {
-        background-position: -640px -890px;
-    }
-    .card-cl019 {
-        background-position: -3584px -534px;
-    }
-    .card-cb020 {
-        background-position: -2816px -356px;
-    }
-    .card-sb015 {
-        background-position: -3200px -890px;
-    }
-    .card-cl018 {
-        background-position: -3456px -534px;
-    }
-    .card-cl021 {
-        background-position: -0px -712px;
-    }
-    .card-sl011 {
-        background-position: -2432px -1068px;
-    }
-    .card-cb019 {
-        background-position: -2688px -356px;
-    }
-    .card-sb012 {
-        background-position: -2816px -890px;
-    }
-    .card-cl012 {
-        background-position: -2816px -534px;
-    }
-    .card-sl012 {
-        background-position: -2560px -1068px;
-    }
-    .card-fb007 {
-        background-position: -3200px -712px;
-    }
-    .card-sb014 {
-        background-position: -3072px -890px;
-    }
-    .card-sl004 {
-        background-position: -1536px -1068px;
-    }
-    .card-cl025 {
-        background-position: -512px -712px;
-    }
-    .card-cb022 {
-        background-position: -3072px -356px;
-    }
-    .card-sl021 {
-        background-position: -3712px -1068px;
-    }
-    .card-sl018 {
-        background-position: -3328px -1068px;
-    }
-    .card-fl007 {
-        background-position: -768px -890px;
-    }
-    .card-cl027 {
-        background-position: -768px -712px;
-    }
-    .card-fb008 {
-        background-position: -3328px -712px;
-    }
-    .card-cb028 {
-        background-position: -0px -534px;
-    }
-    .card-cb026 {
-        background-position: -3584px -356px;
-    }
-    .card-sb023 {
-        background-position: -384px -1068px;
-    }
-    .card-cl024 {
-        background-position: -384px -712px;
-    }
-    .card-cl030 {
-        background-position: -1152px -712px;
-    }
-    .card-sb020 {
-        background-position: -0px -1068px;
-    }
-    .card-fl008 {
-        background-position: -896px -890px;
-    }
-    .card-cb024 {
-        background-position: -3328px -356px;
-    }
-    .card-sl020 {
-        background-position: -3584px -1068px;
-    }
-    .card-sb002 {
-        background-position: -1536px -890px;
-    }
-    .card-sb022 {
-        background-position: -256px -1068px;
-    }
-    .card-cl026 {
-        background-position: -640px -712px;
-    }
-    .card-cl029 {
-        background-position: -1024px -712px;
-    }
-    .card-cl028 {
-        background-position: -896px -712px;
-    }
-    .card-fl009 {
-        background-position: -1024px -890px;
-    }
-    .card-cl023 {
-        background-position: -256px -712px;
-    }
-    .card-sb019 {
-        background-position: -3712px -890px;
-    }
-    .card-cb029 {
-        background-position: -128px -534px;
-    }
-    .card-cb027 {
-        background-position: -3712px -356px;
-    }
-    .card-sl017 {
-        background-position: -3200px -1068px;
-    }
-    .card-fb009 {
-        background-position: -3456px -712px;
-    }
-    .card-sb021 {
-        background-position: -128px -1068px;
-    }
-    .card-cb023 {
-        background-position: -3200px -356px;
-    }
-    .card-cb030 {
-        background-position: -256px -534px;
-    }
-    .card-cb025 {
-        background-position: -3456px -356px;
-    }
-    .card-sl019 {
-        background-position: -3456px -1068px;
-    }
-    .card-cl038 {
-        background-position: -2176px -712px;
-    }
-    .card-cb035 {
-        background-position: -896px -534px;
-    }
-    .card-sb024 {
-        background-position: -512px -1068px;
-    }
-    .card-sb025 {
-        background-position: -640px -1068px;
-    }
-    .card-cb033 {
-        background-position: -640px -534px;
-    }
-    .card-cl033 {
-        background-position: -1536px -712px;
-    }
-    .card-sl022 {
-        background-position: -0px -1246px;
-    }
-    .card-fl011 {
-        background-position: -1280px -890px;
-    }
-    .card-cl034 {
-        background-position: -1664px -712px;
-    }
-    .card-cl036 {
-        background-position: -1920px -712px;
-    }
-    .card-cb038 {
-        background-position: -1280px -534px;
-    }
-    .card-fb010 {
-        background-position: -3584px -712px;
-    }
-    .card-sl024 {
-        background-position: -256px -1246px;
-    }
-    .card-cb036 {
-        background-position: -1024px -534px;
-    }
-    .card-fl012 {
-        background-position: -1408px -890px;
-    }
-    .card-sl025 {
-        background-position: -384px -1246px;
-    }
-    .card-sb027 {
-        background-position: -896px -1068px;
-    }
-    .card-cl037 {
-        background-position: -2048px -712px;
-    }
-    .card-cb031 {
-        background-position: -384px -534px;
-    }
-    .card-cl032 {
-        background-position: -1408px -712px;
-    }
-    .card-cb032 {
-        background-position: -512px -534px;
-    }
-    .card-cl031 {
-        background-position: -1280px -712px;
-    }
-    .card-sl023 {
-        background-position: -128px -1246px;
-    }
-    .card-fb011 {
-        background-position: -3712px -712px;
-    }
-    .card-sl026 {
-        background-position: -512px -1246px;
-    }
-    .card-cb034 {
-        background-position: -768px -534px;
-    }
-    .card-cl039 {
-        background-position: -2304px -712px;
-    }
-    .card-sb028 {
-        background-position: -1024px -1068px;
-    }
-    .card-fl010 {
-        background-position: -1152px -890px;
-    }
-    .card-cb037 {
-        background-position: -1152px -534px;
-    }
-    .card-cl035 {
-        background-position: -1792px -712px;
-    }
-    .card-sb026 {
-        background-position: -768px -1068px;
-    }
-    .card-cb001 {
-        background-position: -512px -356px;
-    }
-    .card-fb001 {
-        background-position: -2432px -712px;
-    }
-    .card-cb004 {
-        background-position: -896px -356px;
-    }
-    .card-cl006 {
-        background-position: -2048px -534px;
-    }
-    .card-cl001 {
-        background-position: -1408px -534px;
-    }
-    .card-cs001 {
-        background-position: -640px -1246px;
-    }
-    .card-cs004 {
-        background-position: -1024px -1246px;
-    }
-    .card-cs007 {
-        background-position: -1408px -1246px;
-    }
-    .card-ss001 {
-        background-position: -3200px -1424px;
-    }
-    .card-fs003 {
-        background-position: -2048px -1424px;
-    }
-    .card-ss006 {
-        background-position: -0px -1602px;
-    }
-    .card-fs001 {
-        background-position: -1792px -1424px;
-    }
-    .card-cs002 {
-        background-position: -768px -1246px;
-    }
-    .card-cs003 {
-        background-position: -896px -1246px;
-    }
-    .card-ss002 {
-        background-position: -3328px -1424px;
-    }
-    .card-ss003 {
-        background-position: -3456px -1424px;
-    }
-    .card-cs005 {
-        background-position: -1152px -1246px;
-    }
-    .card-fs002 {
-        background-position: -1920px -1424px;
-    }
-    .card-cs008 {
-        background-position: -1536px -1246px;
-    }
-    .card-ss005 {
-        background-position: -3712px -1424px;
-    }
-    .card-cs006 {
-        background-position: -1280px -1246px;
-    }
-    .card-ss004 {
-        background-position: -3584px -1424px;
-    }
-    .card-cs009 {
-        background-position: -1664px -1246px;
-    }
-    .card-cs010 {
-        background-position: -1792px -1246px;
-    }
-    .card-ss008 {
-        background-position: -256px -1602px;
-    }
-    .card-ss007 {
-        background-position: -128px -1602px;
-    }
-    .card-cs011 {
-        background-position: -1920px -1246px;
-    }
-    .card-ss010 {
-        background-position: -512px -1602px;
-    }
-    .card-cs015 {
-        background-position: -2432px -1246px;
-    }
-    .card-cs014 {
-        background-position: -2304px -1246px;
-    }
-    .card-cs019 {
-        background-position: -2944px -1246px;
-    }
-    .card-cs018 {
-        background-position: -2816px -1246px;
-    }
-    .card-ss009 {
-        background-position: -384px -1602px;
-    }
-    .card-fs005 {
-        background-position: -2304px -1424px;
-    }
-    .card-cs012 {
-        background-position: -2048px -1246px;
-    }
-    .card-cs016 {
-        background-position: -2560px -1246px;
-    }
-    .card-ss012 {
-        background-position: -768px -1602px;
-    }
-    .card-fs004 {
-        background-position: -2176px -1424px;
-    }
-    .card-cs013 {
-        background-position: -2176px -1246px;
-    }
-    .card-cs017 {
-        background-position: -2688px -1246px;
-    }
-    .card-ss011 {
-        background-position: -640px -1602px;
-    }
-    .card-cs021 {
-        background-position: -3200px -1246px;
-    }
-    .card-cs022 {
-        background-position: -3328px -1246px;
-    }
-    .card-cs026 {
-        background-position: -0px -1424px;
-    }
-    .card-ss015 {
-        background-position: -1152px -1602px;
-    }
-    .card-fs006 {
-        background-position: -2432px -1424px;
-    }
-    .card-cs023 {
-        background-position: -3456px -1246px;
-    }
-    .card-cs029 {
-        background-position: -384px -1424px;
-    }
-    .card-ss013 {
-        background-position: -896px -1602px;
-    }
-    .card-cs024 {
-        background-position: -3584px -1246px;
-    }
-    .card-ss016 {
-        background-position: -1280px -1602px;
-    }
-    .card-fs007 {
-        background-position: -2560px -1424px;
-    }
-    .card-ss017 {
-        background-position: -1408px -1602px;
-    }
-    .card-cs028 {
-        background-position: -256px -1424px;
-    }
-    .card-ss019 {
-        background-position: -1664px -1602px;
-    }
-    .card-ss018 {
-        background-position: -1536px -1602px;
-    }
-    .card-cs027 {
-        background-position: -128px -1424px;
-    }
-    .card-cs025 {
-        background-position: -3712px -1246px;
-    }
-    .card-ss014 {
-        background-position: -1024px -1602px;
-    }
-    .card-fs008 {
-        background-position: -2688px -1424px;
-    }
-    .card-cs020 {
-        background-position: -3072px -1246px;
-    }
-    .card-cs030 {
-        background-position: -512px -1424px;
-    }
-    .card-ss020 {
-        background-position: -1792px -1602px;
-    }
-    .card-ss024 {
-        background-position: -2304px -1602px;
-    }
-    .card-cs036 {
-        background-position: -1280px -1424px;
-    }
-    .card-cs033 {
-        background-position: -896px -1424px;
-    }
-    .card-ss025 {
-        background-position: -2432px -1602px;
-    }
-    .card-fs009 {
-        background-position: -2816px -1424px;
-    }
-    .card-ss022 {
-        background-position: -2048px -1602px;
-    }
-    .card-cs039 {
-        background-position: -1664px -1424px;
-    }
-    .card-cs031 {
-        background-position: -640px -1424px;
-    }
-    .card-cs034 {
-        background-position: -1024px -1424px;
-    }
-    .card-cs037 {
-        background-position: -1408px -1424px;
-    }
-    .card-ss023 {
-        background-position: -2176px -1602px;
-    }
-    .card-fs011 {
-        background-position: -3072px -1424px;
-    }
-    .card-ss026 {
-        background-position: -2560px -1602px;
-    }
-    .card-cs032 {
-        background-position: -768px -1424px;
-    }
-    .card-cs038 {
-        background-position: -1536px -1424px;
-    }
-    .card-ss021 {
-        background-position: -1920px -1602px;
-    }
-    .card-fs010 {
-        background-position: -2944px -1424px;
-    }
-    .card-cs035 {
-        background-position: -1152px -1424px;
-    }
-    
+      width: 128px;
+      height: 178px;
+      background: url("LoveAndBerryDSCards.png") no-repeat;
+      margin: 0.5rem 0;
+    }
+
+    .barcode {
+      user-select: all;
+      cursor: pointer;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #333;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .barcode:hover {
+      background-color: #f0f0f0;
+    }
+
+    .section-title {
+      color: red;
+      font-size: 1.5rem;
+      margin: 1rem auto;
+      display: table;
+    }
+
     #snackbar {
       visibility: hidden;
       min-width: 250px;
@@ -904,480 +91,1855 @@
       background-color: #333;
       color: #fff;
       text-align: center;
-      border-radius: 2px;
+      border-radius: 4px;
       padding: 16px;
       position: fixed;
       z-index: 1;
       left: 50%;
       bottom: 30px;
-      font-size: 17px;
+      font-size: 1rem;
     }
 
     #snackbar.show {
       visibility: visible;
-      -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
       animation: fadein 0.5s, fadeout 0.5s 1.5s;
     }
 
-    @-webkit-keyframes fadein {
-      from {bottom: 0; opacity: 0;} 
-      to {bottom: 30px; opacity: 1;}
-    }
-
     @keyframes fadein {
-      from {bottom: 0; opacity: 0;}
-      to {bottom: 30px; opacity: 1;}
-    }
-
-    @-webkit-keyframes fadeout {
-      from {bottom: 30px; opacity: 1;} 
-      to {bottom: 0; opacity: 0;}
+      from { bottom: 0; opacity: 0; }
+      to { bottom: 30px; opacity: 1; }
     }
 
     @keyframes fadeout {
-      from {bottom: 30px; opacity: 1;}
-      to {bottom: 0; opacity: 0;}
+      from { bottom: 30px; opacity: 1; }
+      to { bottom: 0; opacity: 0; }
     }
-</style>
+
+    /* Card sprite positions */
+    .card-sp014 { background-position: -1152px -0px; }
+    .card-sp015 { background-position: -1280px -0px; }
+    .card-sp016 { background-position: -1408px -0px; }
+    .card-sp013 { background-position: -1024px -0px; }
+    .card-sp003 { background-position: -256px -0px; }
+    .card-sp002 { background-position: -128px -0px; }
+    .card-sp001 { background-position: -0px -0px; }
+    .card-sp004 { background-position: -384px -0px; }
+    .card-sp005 { background-position: -512px -0px; }
+    .card-sp006 { background-position: -640px -0px; }
+    .card-sp007 { background-position: -768px -0px; }
+    .card-sp008 { background-position: -896px -0px; }
+    .card-sp017 { background-position: -1536px -0px; }
+    .card-hr016 { background-position: -3584px -0px; }
+    .card-hr026 { background-position: -1024px -178px; }
+    .card-hr001 { background-position: -1664px -0px; }
+    .card-hr503 { background-position: -2944px -178px; }
+    .card-hr005 { background-position: -2176px -0px; }
+    .card-hr504 { background-position: -3072px -178px; }
+    .card-hr011 { background-position: -2944px -0px; }
+    .card-hr017 { background-position: -3712px -0px; }
+    .card-hr004 { background-position: -2048px -0px; }
+    .card-hr007 { background-position: -2432px -0px; }
+    .card-hr002 { background-position: -1792px -0px; }
+    .card-hr008 { background-position: -2560px -0px; }
+    .card-hr012 { background-position: -3072px -0px; }
+    .card-hr013 { background-position: -3200px -0px; }
+    .card-hr502 { background-position: -2816px -178px; }
+    .card-hr027 { background-position: -1152px -178px; }
+    .card-hr006 { background-position: -2304px -0px; }
+    .card-hr003 { background-position: -1920px -0px; }
+    .card-hr009 { background-position: -2688px -0px; }
+    .card-hr505 { background-position: -3200px -178px; }
+    .card-hr010 { background-position: -2816px -0px; }
+    .card-hr022 { background-position: -512px -178px; }
+    .card-hr020 { background-position: -256px -178px; }
+    .card-hr507 { background-position: -3456px -178px; }
+    .card-hr015 { background-position: -3456px -0px; }
+    .card-hr014 { background-position: -3328px -0px; }
+    .card-hr021 { background-position: -384px -178px; }
+    .card-hr506 { background-position: -3328px -178px; }
+    .card-hr023 { background-position: -640px -178px; }
+    .card-hr019 { background-position: -128px -178px; }
+    .card-hr030 { background-position: -1536px -178px; }
+    .card-hr509 { background-position: -3712px -178px; }
+    .card-hr033 { background-position: -1920px -178px; }
+    .card-hr031 { background-position: -1664px -178px; }
+    .card-hr029 { background-position: -1408px -178px; }
+    .card-hr032 { background-position: -1792px -178px; }
+    .card-hr508 { background-position: -3584px -178px; }
+    .card-hr025 { background-position: -896px -178px; }
+    .card-hr028 { background-position: -1280px -178px; }
+    .card-hr510 { background-position: -0px -356px; }
+    .card-hr038 { background-position: -2560px -178px; }
+    .card-hr024 { background-position: -768px -178px; }
+    .card-hr034 { background-position: -2048px -178px; }
+    .card-hr511 { background-position: -128px -356px; }
+    .card-hr037 { background-position: -2432px -178px; }
+    .card-hr512 { background-position: -256px -356px; }
+    .card-hr036 { background-position: -2304px -178px; }
+    .card-hr513 { background-position: -384px -356px; }
+    .card-hr035 { background-position: -2176px -178px; }
+    .card-hr018 { background-position: -0px -178px; }
+    .card-hr501 { background-position: -2688px -178px; }
+    .card-sl003 { background-position: -1408px -1068px; }
+    .card-cb009 { background-position: -1536px -356px; }
+    .card-fb004 { background-position: -2816px -712px; }
+    .card-sl008 { background-position: -2048px -1068px; }
+    .card-cl005 { background-position: -1920px -534px; }
+    .card-cl004 { background-position: -1792px -534px; }
+    .card-cb003 { background-position: -768px -356px; }
+    .card-sb008 { background-position: -2304px -890px; }
+    .card-fb002 { background-position: -2560px -712px; }
+    .card-cb011 { background-position: -1792px -356px; }
+    .card-fl001 { background-position: -0px -890px; }
+    .card-sb005 { background-position: -1920px -890px; }
+    .card-cb006 { background-position: -1152px -356px; }
+    .card-cb007 { background-position: -1280px -356px; }
+    .card-cl007 { background-position: -2176px -534px; }
+    .card-cl010 { background-position: -2560px -534px; }
+    .card-cl009 { background-position: -2432px -534px; }
+    .card-sl007 { background-position: -1920px -1068px; }
+    .card-cl002 { background-position: -1536px -534px; }
+    .card-cb005 { background-position: -1024px -356px; }
+    .card-sl005 { background-position: -1664px -1068px; }
+    .card-fl002 { background-position: -128px -890px; }
+    .card-cl008 { background-position: -2304px -534px; }
+    .card-fb003 { background-position: -2688px -712px; }
+    .card-sb003 { background-position: -1664px -890px; }
+    .card-sb007 { background-position: -2176px -890px; }
+    .card-cb008 { background-position: -1408px -356px; }
+    .card-sb006 { background-position: -2048px -890px; }
+    .card-fl003 { background-position: -256px -890px; }
+    .card-cl003 { background-position: -1664px -534px; }
+    .card-cl011 { background-position: -2688px -534px; }
+    .card-sb009 { background-position: -2432px -890px; }
+    .card-sl006 { background-position: -1792px -1068px; }
+    .card-cb002 { background-position: -640px -356px; }
+    .card-sl002 { background-position: -1280px -1068px; }
+    .card-cb010 { background-position: -1664px -356px; }
+    .card-sl001 { background-position: -1152px -1068px; }
+    .card-fl004 { background-position: -384px -890px; }
+    .card-sb011 { background-position: -2688px -890px; }
+    .card-fb005 { background-position: -2944px -712px; }
+    .card-sl010 { background-position: -2304px -1068px; }
+    .card-sb010 { background-position: -2560px -890px; }
+    .card-sl009 { background-position: -2176px -1068px; }
+    .card-sl016 { background-position: -3072px -1068px; }
+    .card-sb018 { background-position: -3584px -890px; }
+    .card-cl022 { background-position: -128px -712px; }
+    .card-cl016 { background-position: -3200px -534px; }
+    .card-sb016 { background-position: -3328px -890px; }
+    .card-fl005 { background-position: -512px -890px; }
+    .card-cl017 { background-position: -3328px -534px; }
+    .card-cb018 { background-position: -2560px -356px; }
+    .card-cb017 { background-position: -2432px -356px; }
+    .card-cb021 { background-position: -2944px -356px; }
+    .card-cl020 { background-position: -3712px -534px; }
+    .card-sl013 { background-position: -2688px -1068px; }
+    .card-cb016 { background-position: -2304px -356px; }
+    .card-sb017 { background-position: -3456px -890px; }
+    .card-sl015 { background-position: -2944px -1068px; }
+    .card-fb006 { background-position: -3072px -712px; }
+    .card-cl013 { background-position: -2944px -534px; }
+    .card-cb015 { background-position: -2176px -356px; }
+    .card-sb013 { background-position: -2944px -890px; }
+    .card-sb004 { background-position: -1792px -890px; }
+    .card-sl014 { background-position: -2816px -1068px; }
+    .card-cb013 { background-position: -2048px -356px; }
+    .card-cl014 { background-position: -3072px -534px; }
+    .card-cb012 { background-position: -1920px -356px; }
+    .card-fl006 { background-position: -640px -890px; }
+    .card-cl019 { background-position: -3584px -534px; }
+    .card-cb020 { background-position: -2816px -356px; }
+    .card-sb015 { background-position: -3200px -890px; }
+    .card-cl018 { background-position: -3456px -534px; }
+    .card-cl021 { background-position: -0px -712px; }
+    .card-sl011 { background-position: -2432px -1068px; }
+    .card-cb019 { background-position: -2688px -356px; }
+    .card-sb012 { background-position: -2816px -890px; }
+    .card-cl012 { background-position: -2816px -534px; }
+    .card-sl012 { background-position: -2560px -1068px; }
+    .card-fb007 { background-position: -3200px -712px; }
+    .card-sb014 { background-position: -3072px -890px; }
+    .card-sl004 { background-position: -1536px -1068px; }
+    .card-cl025 { background-position: -512px -712px; }
+    .card-cb022 { background-position: -3072px -356px; }
+    .card-sl021 { background-position: -3712px -1068px; }
+    .card-sl018 { background-position: -3328px -1068px; }
+    .card-fl007 { background-position: -768px -890px; }
+    .card-cl027 { background-position: -768px -712px; }
+    .card-fb008 { background-position: -3328px -712px; }
+    .card-cb028 { background-position: -0px -534px; }
+    .card-cb026 { background-position: -3584px -356px; }
+    .card-sb023 { background-position: -384px -1068px; }
+    .card-cl024 { background-position: -384px -712px; }
+    .card-cl030 { background-position: -1152px -712px; }
+    .card-sb020 { background-position: -0px -1068px; }
+    .card-fl008 { background-position: -896px -890px; }
+    .card-cb024 { background-position: -3328px -356px; }
+    .card-sl020 { background-position: -3584px -1068px; }
+    .card-sb002 { background-position: -1536px -890px; }
+    .card-sb022 { background-position: -256px -1068px; }
+    .card-cl026 { background-position: -640px -712px; }
+    .card-cl029 { background-position: -1024px -712px; }
+    .card-cl028 { background-position: -896px -712px; }
+    .card-fl009 { background-position: -1024px -890px; }
+    .card-cl023 { background-position: -256px -712px; }
+    .card-sb019 { background-position: -3712px -890px; }
+    .card-cb029 { background-position: -128px -534px; }
+    .card-cb027 { background-position: -3712px -356px; }
+    .card-sl017 { background-position: -3200px -1068px; }
+    .card-fb009 { background-position: -3456px -712px; }
+    .card-sb021 { background-position: -128px -1068px; }
+    .card-cb023 { background-position: -3200px -356px; }
+    .card-cb030 { background-position: -256px -534px; }
+    .card-cb025 { background-position: -3456px -356px; }
+    .card-sl019 { background-position: -3456px -1068px; }
+    .card-cl038 { background-position: -2176px -712px; }
+    .card-cb035 { background-position: -896px -534px; }
+    .card-sb024 { background-position: -512px -1068px; }
+    .card-sb025 { background-position: -640px -1068px; }
+    .card-cb033 { background-position: -640px -534px; }
+    .card-cl033 { background-position: -1536px -712px; }
+    .card-sl022 { background-position: -0px -1246px; }
+    .card-fl011 { background-position: -1280px -890px; }
+    .card-cl034 { background-position: -1664px -712px; }
+    .card-cl036 { background-position: -1920px -712px; }
+    .card-cb038 { background-position: -1280px -534px; }
+    .card-fb010 { background-position: -3584px -712px; }
+    .card-sl024 { background-position: -256px -1246px; }
+    .card-cb036 { background-position: -1024px -534px; }
+    .card-fl012 { background-position: -1408px -890px; }
+    .card-sl025 { background-position: -384px -1246px; }
+    .card-sb027 { background-position: -896px -1068px; }
+    .card-cl037 { background-position: -2048px -712px; }
+    .card-cb031 { background-position: -384px -534px; }
+    .card-cl032 { background-position: -1408px -712px; }
+    .card-cb032 { background-position: -512px -534px; }
+    .card-cl031 { background-position: -1280px -712px; }
+    .card-sl023 { background-position: -128px -1246px; }
+    .card-fb011 { background-position: -3712px -712px; }
+    .card-sl026 { background-position: -512px -1246px; }
+    .card-cb034 { background-position: -768px -534px; }
+    .card-cl039 { background-position: -2304px -712px; }
+    .card-sb028 { background-position: -1024px -1068px; }
+    .card-fl010 { background-position: -1152px -890px; }
+    .card-cb037 { background-position: -1152px -534px; }
+    .card-cl035 { background-position: -1792px -712px; }
+    .card-sb026 { background-position: -768px -1068px; }
+    .card-cb001 { background-position: -512px -356px; }
+    .card-fb001 { background-position: -2432px -712px; }
+    .card-cb004 { background-position: -896px -356px; }
+    .card-cl006 { background-position: -2048px -534px; }
+    .card-cl001 { background-position: -1408px -534px; }
+    .card-cs001 { background-position: -640px -1246px; }
+    .card-cs004 { background-position: -1024px -1246px; }
+    .card-cs007 { background-position: -1408px -1246px; }
+    .card-ss001 { background-position: -3200px -1424px; }
+    .card-fs003 { background-position: -2048px -1424px; }
+    .card-ss006 { background-position: -0px -1602px; }
+    .card-fs001 { background-position: -1792px -1424px; }
+    .card-cs002 { background-position: -768px -1246px; }
+    .card-cs003 { background-position: -896px -1246px; }
+    .card-ss002 { background-position: -3328px -1424px; }
+    .card-ss003 { background-position: -3456px -1424px; }
+    .card-cs005 { background-position: -1152px -1246px; }
+    .card-fs002 { background-position: -1920px -1424px; }
+    .card-cs008 { background-position: -1536px -1246px; }
+    .card-ss005 { background-position: -3712px -1424px; }
+    .card-cs006 { background-position: -1280px -1246px; }
+    .card-ss004 { background-position: -3584px -1424px; }
+    .card-cs009 { background-position: -1664px -1246px; }
+    .card-cs010 { background-position: -1792px -1246px; }
+    .card-ss008 { background-position: -256px -1602px; }
+    .card-ss007 { background-position: -128px -1602px; }
+    .card-cs011 { background-position: -1920px -1246px; }
+    .card-ss010 { background-position: -512px -1602px; }
+    .card-cs015 { background-position: -2432px -1246px; }
+    .card-cs014 { background-position: -2304px -1246px; }
+    .card-cs019 { background-position: -2944px -1246px; }
+    .card-cs018 { background-position: -2816px -1246px; }
+    .card-ss009 { background-position: -384px -1602px; }
+    .card-fs005 { background-position: -2304px -1424px; }
+    .card-cs012 { background-position: -2048px -1246px; }
+    .card-cs016 { background-position: -2560px -1246px; }
+    .card-ss012 { background-position: -768px -1602px; }
+    .card-fs004 { background-position: -2176px -1424px; }
+    .card-cs013 { background-position: -2176px -1246px; }
+    .card-cs017 { background-position: -2688px -1246px; }
+    .card-ss011 { background-position: -640px -1602px; }
+    .card-cs021 { background-position: -3200px -1246px; }
+    .card-cs022 { background-position: -3328px -1246px; }
+    .card-cs026 { background-position: -0px -1424px; }
+    .card-ss015 { background-position: -1152px -1602px; }
+    .card-fs006 { background-position: -2432px -1424px; }
+    .card-cs023 { background-position: -3456px -1246px; }
+    .card-cs029 { background-position: -384px -1424px; }
+    .card-ss013 { background-position: -896px -1602px; }
+    .card-cs024 { background-position: -3584px -1246px; }
+    .card-ss016 { background-position: -1280px -1602px; }
+    .card-fs007 { background-position: -2560px -1424px; }
+    .card-ss017 { background-position: -1408px -1602px; }
+    .card-cs028 { background-position: -256px -1424px; }
+    .card-ss019 { background-position: -1664px -1602px; }
+    .card-ss018 { background-position: -1536px -1602px; }
+    .card-cs027 { background-position: -128px -1424px; }
+    .card-cs025 { background-position: -3712px -1246px; }
+    .card-ss014 { background-position: -1024px -1602px; }
+    .card-fs008 { background-position: -2688px -1424px; }
+    .card-cs020 { background-position: -3072px -1246px; }
+    .card-cs030 { background-position: -512px -1424px; }
+    .card-ss020 { background-position: -1792px -1602px; }
+    .card-ss024 { background-position: -2304px -1602px; }
+    .card-cs036 { background-position: -1280px -1424px; }
+    .card-cs033 { background-position: -896px -1424px; }
+    .card-ss025 { background-position: -2432px -1602px; }
+    .card-fs009 { background-position: -2816px -1424px; }
+    .card-ss022 { background-position: -2048px -1602px; }
+    .card-cs039 { background-position: -1664px -1424px; }
+    .card-cs031 { background-position: -640px -1424px; }
+    .card-cs034 { background-position: -1024px -1424px; }
+    .card-cs037 { background-position: -1408px -1424px; }
+    .card-ss023 { background-position: -2176px -1602px; }
+    .card-fs011 { background-position: -3072px -1424px; }
+    .card-ss026 { background-position: -2560px -1602px; }
+    .card-cs032 { background-position: -768px -1424px; }
+    .card-cs038 { background-position: -1536px -1424px; }
+    .card-ss021 { background-position: -1920px -1602px; }
+    .card-fs010 { background-position: -2944px -1424px; }
+    .card-cs035 { background-position: -1152px -1424px; }
+  </style>
 </head>
-<body bgcolor="#E6E6FA">
-<p style="text-align:center">Cards and barcodes for the DS game Oshare Majo Love and Berry. For use with emulation of the Sega Card Reader(HCV-1000).</p>
-<p style="text-align:center">DSゲーム「オシャレ魔女♥ラブandベリ」のカードとバーコードです。 Sega カードリーダー (HCV-1000) のエミュレーションで使用します。</p>
+<body>
+  <div class="container">
+    <div class="intro">
+      <p>Cards and barcodes for the DS game Oshare Majo Love and Berry. For use with emulation of the Sega Card Reader (HCV-1000).</p>
+      <p>DSゲーム「オシャレ魔女♥ラブandベリ」のカードとバーコードです。 Sega カードリーダー (HCV-1000) のエミュレーションで使用します。</p>
+    </div>
 
-<br/><br/>
-<div id="cards">
-<table class="center">
-  <tr>
-    <th>DSコレクションカード【H】<br/><span class="cardbase card-sp014"></span><br/><span class="barcode">*OHP5FJW5S9G*</span></th>
-    <th>DSコレクションカード【D】<br/><span class="cardbase card-sp015"></span><br/><span class="barcode">*OHC-LIW5SOG*</span></th>
-    <th>DSコレクションカード【F】 <br/><span class="cardbase card-sp016"></span><br/><span class="barcode">*OHPYAQW5SBG*</span></th>
-    <th>マジカルデコレカード<br/><span class="cardbase card-sp013"></span><br/><span class="barcode">*OHC-7EW4%FG*</span></th>
-  </tr>
-</table>
+    <div class="card-section">
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title">DSコレクションカード【H】</div>
+          <span class="cardbase card-sp014"></span>
+          <span class="barcode">*OHP5FJW5S9G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">DSコレクションカード【D】</div>
+          <span class="cardbase card-sp015"></span>
+          <span class="barcode">*OHC-LIW5SOG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">DSコレクションカード【F】 </div>
+          <span class="cardbase card-sp016"></span>
+          <span class="barcode">*OHPYAQW5SBG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">マジカルデコレカード</div>
+          <span class="cardbase card-sp013"></span>
+          <span class="barcode">*OHC-7EW4%FG*</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card-section">
+      <h1 class="section-title">S</h1>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title">001<br/>ミラクルファンデーション</div>
+          <span class="cardbase card-sp003"></span>
+          <span class="barcode">*OUSG.TRI2WD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">002<br/>マジカルヘアカラー</div>
+          <span class="cardbase card-sp002"></span>
+          <span class="barcode">*OUMPDGRI28D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">003<br/>ミラクルヘアカラー</div>
+          <span class="cardbase card-sp001"></span>
+          <span class="barcode">*OUSGK1RI2ID*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">004<br/>マジカルタイムプラス</div>
+          <span class="cardbase card-sp004"></span>
+          <span class="barcode">*OUMQNQE0JXD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">005<br/>ミラクルフットカラー</div>
+          <span class="cardbase card-sp005"></span>
+          <span class="barcode">*OUSHRDRI29D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">006<br/>ミラクルアイウェア</div>
+          <span class="cardbase card-sp006"></span>
+          <span class="barcode">*OUUTSA3A-7D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">007<br/>マジカルアイウェア</div>
+          <span class="cardbase card-sp007"></span>
+          <span class="barcode">*OUVBWN3A-VD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">008<br/>ゴージャスアイウェア</div>
+          <span class="cardbase card-sp008"></span>
+          <span class="barcode">*OHAC-SBLTCG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">009<br/>マジカルハットカラー</div>
+          <span class="cardbase card-sp017"></span>
+          <span class="barcode">*OHCSPPW4%3G*</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card-section">
+      <h1 class="section-title">H</h1>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title">001<br/>さらさらロング</div>
+          <span class="cardbase card-hr016"></span>
+          <span class="barcode">*OUMLMHQ697D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">002<br/>さわやかポニーテール</div>
+          <span class="cardbase card-hr026"></span>
+          <span class="barcode">*OUMMJSQ69TD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">003<br/>おひめさまヘア</div>
+          <span class="cardbase card-hr001"></span>
+          <span class="barcode">*OUSGKGQ697D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">004<br/>ホットバンダナ</div>
+          <span class="cardbase card-hr503"></span>
+          <span class="barcode">*OUSG.6QG9GD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">005<br/>マリンヘア</div>
+          <span class="cardbase card-hr005"></span>
+          <span class="barcode">*OUSHROQ69WD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">006<br/>クールニット</div>
+          <span class="cardbase card-hr504"></span>
+          <span class="barcode">*OUMQN9DVFHD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">007<br/>たてまきガーリーヘア</div>
+          <span class="cardbase card-hr011"></span>
+          <span class="barcode">*OUSHERQ69TD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">008<br/>ロングアップヘア</div>
+          <span class="cardbase card-hr017"></span>
+          <span class="barcode">*O3B36NFU7JG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">009<br/>げんきっ子ヘア</div>
+          <span class="cardbase card-hr004"></span>
+          <span class="barcode">*OUMQ9BQ698D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">010<br/>ぴょん×２あみこみヘア</div>
+          <span class="cardbase card-hr007"></span>
+          <span class="barcode">*OUSHPJQ699D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">011<br/>プリティたてロール</div>
+          <span class="cardbase card-hr002"></span>
+          <span class="barcode">*OUMPDRQ69VD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">012<br/>ポンパドールショート</div>
+          <span class="cardbase card-hr008"></span>
+          <span class="barcode">*OUMQUUQ69SD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">013<br/>モンキーショートヘア</div>
+          <span class="cardbase card-hr012"></span>
+          <span class="barcode">*OUML48Q69GD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">014<br/>スパイシーよこむすび</div>
+          <span class="cardbase card-hr013"></span>
+          <span class="barcode">*OUSOABQ696D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">015<br/>アメカジキャップ</div>
+          <span class="cardbase card-hr502"></span>
+          <span class="barcode">*OUMP CQRR2D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">016<br/>ふんわりセミロング</div>
+          <span class="cardbase card-hr027"></span>
+          <span class="barcode">*OUSPY5Q69GD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">017<br/>くるりんマジックカール</div>
+          <span class="cardbase card-hr006"></span>
+          <span class="barcode">*OUMQG0Q69JD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">018<br/>プチおだんごヘア</div>
+          <span class="cardbase card-hr003"></span>
+          <span class="barcode">*OUSG.6Q69ID*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">019<br/>ぱつんとバングスヘア</div>
+          <span class="cardbase card-hr009"></span>
+          <span class="barcode">*OUSHI3Q69FD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">020<br/>リボンキャスケット</div>
+          <span class="cardbase card-hr505"></span>
+          <span class="barcode">*OUSHF%QWEFD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">021<br/>クールビューティーヘア</div>
+          <span class="cardbase card-hr010"></span>
+          <span class="barcode">*OUMQZEQ695D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">022<br/>ファンキーアフロ</div>
+          <span class="cardbase card-hr022"></span>
+          <span class="barcode">*OUUGO0FU6CD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">023<br/>はなやかヴィーナスヘア</div>
+          <span class="cardbase card-hr020"></span>
+          <span class="barcode">*OUUGBBFU66D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">024<br/>チェーンストロー</div>
+          <span class="cardbase card-hr507"></span>
+          <span class="barcode">*OUVBVW46UUD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">025<br/>M×2サイドカール</div>
+          <span class="cardbase card-hr015"></span>
+          <span class="barcode">*OUVRSWFU6SD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">026<br/>オリエンタルシニヨン</div>
+          <span class="cardbase card-hr014"></span>
+          <span class="barcode">*OUUFQJFU64D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">027<br/>そとまきワンレグヘア</div>
+          <span class="cardbase card-hr021"></span>
+          <span class="barcode">*OUVNTOFU6UD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">028<br/>ピクシーニットキャップ</div>
+          <span class="cardbase card-hr506"></span>
+          <span class="barcode">*OUUTWV4G1XD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">029<br/>あみこみウェービーヘア</div>
+          <span class="cardbase card-hr023"></span>
+          <span class="barcode">*OUVNLJFU62D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">030<br/>ロマンスウェーブヘア</div>
+          <span class="cardbase card-hr019"></span>
+          <span class="barcode">*OUVN36FU6GD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">031<br/>モコ×2ラブリーヘア</div>
+          <span class="cardbase card-hr030"></span>
+          <span class="barcode">*OHAETI558XG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">032<br/>キリっとカウガール</div>
+          <span class="cardbase card-hr509"></span>
+          <span class="barcode">*OH005T4DBEG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">033<br/>プリティウルフ</div>
+          <span class="cardbase card-hr033"></span>
+          <span class="barcode">*OH0ALX55PNG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">034<br/>みつあみポップヘア</div>
+          <span class="cardbase card-hr031"></span>
+          <span class="barcode">*OH0CVW558KG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">035<br/>あげあげパイナップル</div>
+          <span class="cardbase card-hr029"></span>
+          <span class="barcode">*OHNDGZFH0HG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">036<br/>しなやかセレブ</div>
+          <span class="cardbase card-hr032"></span>
+          <span class="barcode">*OH0QDKFH0IG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">037<br/>メロンサンバイザー</div>
+          <span class="cardbase card-hr508"></span>
+          <span class="barcode">*OH0D.NFAJ8G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">038<br/>ダンシングショートヘア</div>
+          <span class="cardbase card-hr025"></span>
+          <span class="barcode">*OHNQLFFH0TG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">039<br/>ツンツンおちゃめヘア</div>
+          <span class="cardbase card-hr028"></span>
+          <span class="barcode">*OHN0ECFH0UG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">040<br/>アクティブドレッド</div>
+          <span class="cardbase card-hr510"></span>
+          <span class="barcode">*OHP5T-MQTTG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">041<br/>キューティーカール</div>
+          <span class="cardbase card-hr038"></span>
+          <span class="barcode">*OHPFY-MI3QG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">042<br/>ツイストスティックヘア</div>
+          <span class="cardbase card-hr024"></span>
+          <span class="barcode">*OHPYDTMI3DG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">043<br/>そよかぜカールヘア</div>
+          <span class="cardbase card-hr034"></span>
+          <span class="barcode">*OHPFVPMI33G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">044<br/>ふんわりマッシュベレー</div>
+          <span class="cardbase card-hr511"></span>
+          <span class="barcode">*OHC-VEMQTGG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">045<br/>クリッポンヘア</div>
+          <span class="cardbase card-hr037"></span>
+          <span class="barcode">*OHRJ.5K.6AG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">046<br/>おさんぽニット</div>
+          <span class="cardbase card-hr512"></span>
+          <span class="barcode">*OH27-WKXQEG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">047<br/>ミスティレーヌヘア</div>
+          <span class="cardbase card-hr036"></span>
+          <span class="barcode">*OH2H59K.6NG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">048<br/>クロスハンチング</div>
+          <span class="cardbase card-hr513"></span>
+          <span class="barcode">*OHR95VKXQ5G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">049<br/>あみ×2ハーフカット</div>
+          <span class="cardbase card-hr035"></span>
+          <span class="barcode">*OHRJXGK.D%G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">LH-003<br/>クレオパトラヘア</div>
+          <span class="cardbase card-hr018"></span>
+          <span class="barcode">*ONHSUEAC-2A *</span>
+        </div>
+        <div class="card">
+          <div class="card-title">LH-005<br/>しとやかハット</div>
+          <span class="cardbase card-hr501"></span>
+          <span class="barcode">*ONHCUUA4WXA*</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card-section">
+      <h1 class="section-title">D</h1>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title">001<br/>ラブリーストロベリー</div>
+          <span class="cardbase card-sl003"></span>
+          <span class="barcode">*OUSG.QC6BVD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">002<br/>プリントルーズ</div>
+          <span class="cardbase card-cb009"></span>
+          <span class="barcode">*OUSHY67K2ID*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">003<br/>ジャスミンドレス</div>
+          <span class="cardbase card-fb004"></span>
+          <span class="barcode">*OUMQ9A7UJ2D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">004<br/>ふんわりパステル</div>
+          <span class="cardbase card-sl008"></span>
+          <span class="barcode">*OUMQUGCTU7D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">005<br/>パステルフルーティー</div>
+          <span class="cardbase card-cl005"></span>
+          <span class="barcode">*OUSHF07AUCD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">006<br/>ピタＴガール</div>
+          <span class="cardbase card-cl004"></span>
+          <span class="barcode">*OUMQ9N7KVPD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">007<br/>メタリックダウン</div>
+          <span class="cardbase card-cb003"></span>
+          <span class="barcode">*OUSG.P72VQD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">008<br/>フェアリーリーフ</div>
+          <span class="cardbase card-sb008"></span>
+          <span class="barcode">*OUMQJE7H84D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">009<br/>きらパールドレス</div>
+          <span class="cardbase card-fb002"></span>
+          <span class="barcode">*OUMP BCVI5D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">010<br/>ピチパーカーニット</div>
+          <span class="cardbase card-cb011"></span>
+          <span class="barcode">*OUSO3B7K29D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">011<br/>花いっぱいドレス</div>
+          <span class="cardbase card-fl001"></span>
+          <span class="barcode">*O3BT5JSQW3G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">012<br/>ムーンチャイナ</div>
+          <span class="cardbase card-sb005"></span>
+          <span class="barcode">*OUSHFJCDH1D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">013<br/>クールレインボー</div>
+          <span class="cardbase card-cb006"></span>
+          <span class="barcode">*O3OH9PFAWRG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">014<br/>ルーズセーター</div>
+          <span class="cardbase card-cb007"></span>
+          <span class="barcode">*OUSHPICGB1D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">015<br/>キャンディーダボ</div>
+          <span class="cardbase card-cl007"></span>
+          <span class="barcode">*OUSHSUCWBAD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">016<br/>ダボッとジップアップ</div>
+          <span class="cardbase card-cl010"></span>
+          <span class="barcode">*O3OH4749GJG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">017<br/>スポＭＩＸジャンパー</div>
+          <span class="cardbase card-cl009"></span>
+          <span class="barcode">*OUSHIS7KVQD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">018<br/>パイナップルサマー</div>
+          <span class="cardbase card-sl007"></span>
+          <span class="barcode">*O3BG81SDILG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">019<br/>カジュアルポップ</div>
+          <span class="cardbase card-cl002"></span>
+          <span class="barcode">*O3OUGUFAQUG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">020<br/>ミリタリーガール</div>
+          <span class="cardbase card-cb005"></span>
+          <span class="barcode">*O3BTXESD.6G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">021<br/>ファンシーマーガレット</div>
+          <span class="cardbase card-sl005"></span>
+          <span class="barcode">*O3BTXES-37G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">022<br/>キューティーピンクドレス</div>
+          <span class="cardbase card-fl002"></span>
+          <span class="barcode">*O3OU2GS-09G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">023<br/>アクティブパーカー</div>
+          <span class="cardbase card-cl008"></span>
+          <span class="barcode">*O3OHEJ49G9G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">024<br/>そらいろドレス</div>
+          <span class="cardbase card-fb003"></span>
+          <span class="barcode">*O3BT1FSVNNG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">025<br/>キラリンパープル</div>
+          <span class="cardbase card-sb003"></span>
+          <span class="barcode">*OUSG.77NCKD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">026<br/>トロピカルスノー</div>
+          <span class="cardbase card-sb007"></span>
+          <span class="barcode">*O3BG8146VDG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">027<br/>だん×２フリルキャミ</div>
+          <span class="cardbase card-cb008"></span>
+          <span class="barcode">*O3OHE8SOVCG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">028<br/>レーシーフリル</div>
+          <span class="cardbase card-sb006"></span>
+          <span class="barcode">*O3OH9CFC08G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">029<br/>ハニードレープ</div>
+          <span class="cardbase card-fl003"></span>
+          <span class="barcode">*OUSG.CCDP5D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">030<br/>ピチダボスタイル</div>
+          <span class="cardbase card-cl003"></span>
+          <span class="barcode">*OUSG.Q7AUPD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">031<br/>ビタミンガール</div>
+          <span class="cardbase card-cl011"></span>
+          <span class="barcode">*O3BG3V4U5VG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">032<br/>ドルフィンクイーン</div>
+          <span class="cardbase card-sb009"></span>
+          <span class="barcode">*OUSHY67XDHD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">033<br/>るんるんフラワー</div>
+          <span class="cardbase card-sl006"></span>
+          <span class="barcode">*OUMQQHC119D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">034<br/>ピチッと黒Ｔ</div>
+          <span class="cardbase card-cb002"></span>
+          <span class="barcode">*OUMP P7FCPD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">035<br/>スイートエプロン</div>
+          <span class="cardbase card-sl002"></span>
+          <span class="barcode">*O3OU2G4JV-G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">036<br/>パステルロゴワンピ</div>
+          <span class="cardbase card-cb010"></span>
+          <span class="barcode">*O3OH4ISTI.G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">037<br/>ふんわりエンジェル</div>
+          <span class="cardbase card-sl001"></span>
+          <span class="barcode">*OULMS4NAEID*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">038<br/>シトラスフリルドレス</div>
+          <span class="cardbase card-fl004"></span>
+          <span class="barcode">*OUMQR0CI2BD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">039<br/>スイートアクアマリン</div>
+          <span class="cardbase card-sb011"></span>
+          <span class="barcode">*OUSO3O7CVXD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">040<br/>ロイヤルターコイズ</div>
+          <span class="cardbase card-fb005"></span>
+          <span class="barcode">*OUSHFWC%QWD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">041<br/>サンライトハニー</div>
+          <span class="cardbase card-sl010"></span>
+          <span class="barcode">*OUMQZ7C11JD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">042<br/>クールミントタイ</div>
+          <span class="cardbase card-sb010"></span>
+          <span class="barcode">*OUMQ-B7NC6D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">043<br/>チャーミングアプリコット</div>
+          <span class="cardbase card-sl009"></span>
+          <span class="barcode">*OUSHYEC11-D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">044<br/>フローラルカーネーション</div>
+          <span class="cardbase card-sl016"></span>
+          <span class="barcode">*OUQIQ4N2-HD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">045<br/>アメリカンスターガール</div>
+          <span class="cardbase card-sb018"></span>
+          <span class="barcode">*OUQIU6N7SFD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">046<br/>ノリノリ85</div>
+          <span class="cardbase card-cl022"></span>
+          <span class="barcode">*OUQJAIN4E1D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">047<br/>レトロプリーツ</div>
+          <span class="cardbase card-cl016"></span>
+          <span class="barcode">*OUUFJTS1ESD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">048<br/>プリティーピンクデビル</div>
+          <span class="cardbase card-sb016"></span>
+          <span class="barcode">*OUUFJ4SV-ID*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">049<br/>ひまわりサンドレス</div>
+          <span class="cardbase card-fl005"></span>
+          <span class="barcode">*OUVBHXSQFPD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">050<br/>ゴーゴーミニワンピ</div>
+          <span class="cardbase card-cl017"></span>
+          <span class="barcode">*OUVRY5SOWKD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">051<br/>スポカジカーゴ</div>
+          <span class="cardbase card-cb018"></span>
+          <span class="barcode">*OUUF-C5JJ1D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">052<br/>おすましアーガイル</div>
+          <span class="cardbase card-cb017"></span>
+          <span class="barcode">*OUVRERFC-SD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">053<br/>グリッターショート</div>
+          <span class="cardbase card-cb021"></span>
+          <span class="barcode">*OUVNN%FC-FD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">054<br/>フェミニンBガール</div>
+          <span class="cardbase card-cl020"></span>
+          <span class="barcode">*OUUGTX50DSD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">055<br/>クリアライムガール</div>
+          <span class="cardbase card-sl013"></span>
+          <span class="barcode">*OUVRP1SD40D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">056<br/>ひらミニプチセレブ</div>
+          <span class="cardbase card-cb016"></span>
+          <span class="barcode">*OUUFJFSTE-D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">057<br/>シャイニーカリビアン</div>
+          <span class="cardbase card-sb017"></span>
+          <span class="barcode">*OUVRY5S4SJD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">058<br/>カナリアワンピ</div>
+          <span class="cardbase card-sl015"></span>
+          <span class="barcode">*OUVRSIS99-D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">059<br/>ヴィクトリアンロゼッタ</div>
+          <span class="cardbase card-fb006"></span>
+          <span class="barcode">*OUUTMHFPO2D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">060<br/>ポップンスイーツ</div>
+          <span class="cardbase card-cl013"></span>
+          <span class="barcode">*OUVRFK50D6D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">061<br/>サファイアベルボトム</div>
+          <span class="cardbase card-cb015"></span>
+          <span class="barcode">*OUVRITSORRD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">062<br/>キューティーレッド</div>
+          <span class="cardbase card-sb013"></span>
+          <span class="barcode">*OUVRFXSQKSD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">063<br/>ビビットワンピ</div>
+          <span class="cardbase card-sb004"></span>
+          <span class="barcode">*OUUTTKFC03D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">064<br/>メルヘンドール</div>
+          <span class="cardbase card-sl014"></span>
+          <span class="barcode">*OUUFU3S%-KD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">065<br/>スパイシーサファリ</div>
+          <span class="cardbase card-cb013"></span>
+          <span class="barcode">*OUVRF%SORED*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">066<br/>ストロベリーチアガール</div>
+          <span class="cardbase card-cl014"></span>
+          <span class="barcode">*OUUFUGS1E7D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">067<br/>カモフラキャッツ</div>
+          <span class="cardbase card-cb012"></span>
+          <span class="barcode">*OUUFR%SIKBD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">068<br/>ガーランドレース</div>
+          <span class="cardbase card-fl006"></span>
+          <span class="barcode">*OUUTWTS4AAD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">069<br/>ボーイッシュレイヤード</div>
+          <span class="cardbase card-cl019"></span>
+          <span class="barcode">*OUVNAOS1ESD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">070<br/>ちびGトラッド</div>
+          <span class="cardbase card-cb020"></span>
+          <span class="barcode">*OUUGT05JWJD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">071<br/>スノーファンタジー</div>
+          <span class="cardbase card-sb015"></span>
+          <span class="barcode">*OUVRS2S%5ED*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">072<br/>オレンジヒップハング</div>
+          <span class="cardbase card-cl018"></span>
+          <span class="barcode">*OUUF-7S63JD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">073<br/>ピンキーロックンロール</div>
+          <span class="cardbase card-cl021"></span>
+          <span class="barcode">*OUVNH0F7SBD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">074<br/>ミルキーピンクボレロ</div>
+          <span class="cardbase card-sl011"></span>
+          <span class="barcode">*OUVRROS99WD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">075<br/>オフショルアーミー</div>
+          <span class="cardbase card-cb019"></span>
+          <span class="barcode">*OUVNAOSTEUD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">076<br/>シンフォニーフリル</div>
+          <span class="cardbase card-sb012"></span>
+          <span class="barcode">*OUUFGWS%5QD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">077<br/>バニラセーター</div>
+          <span class="cardbase card-cl012"></span>
+          <span class="barcode">*OUUFGJS1E7D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">078<br/>プリンセスアラベスク</div>
+          <span class="cardbase card-sl012"></span>
+          <span class="barcode">*OUUFRKSIS5D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">079<br/>ロマンスエンパイア</div>
+          <span class="cardbase card-fb007"></span>
+          <span class="barcode">*OUVBVVSAFOD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">080<br/>サンセットビーチ</div>
+          <span class="cardbase card-sb014"></span>
+          <span class="barcode">*OUUFU3S4SJD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">081<br/>キューティーセーラー</div>
+          <span class="cardbase card-sl004"></span>
+          <span class="barcode">*OHACEI34EWG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">082<br/>ピングレタンクトップ</div>
+          <span class="cardbase card-cl025"></span>
+          <span class="barcode">*OH0PKR356UG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">083<br/>ちびフレスコパーカー</div>
+          <span class="cardbase card-cb022"></span>
+          <span class="barcode">*OHAR6L340SG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">084<br/>ハピネスQハート</div>
+          <span class="cardbase card-sl021"></span>
+          <span class="barcode">*OH0PRJ34E0G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">085<br/>サン×2アイランド</div>
+          <span class="cardbase card-sl018"></span>
+          <span class="barcode">*OHA2L.34E1G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">086<br/>リボンコンプレーノ</div>
+          <span class="cardbase card-fl007"></span>
+          <span class="barcode">*OH00UO33SWG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">087<br/>モンローストライプ</div>
+          <span class="cardbase card-cl027"></span>
+          <span class="barcode">*OH0P..3562G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">088<br/>ラフィーネアメジスト</div>
+          <span class="cardbase card-fb008"></span>
+          <span class="barcode">*OHAC-B33NDG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">089<br/>ブリッツダンサー</div>
+          <span class="cardbase card-cb028"></span>
+          <span class="barcode">*OHAE0X340PG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">090<br/>キラめきワンショルダー</div>
+          <span class="cardbase card-cb026"></span>
+          <span class="barcode">*OHAR5 340BG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">091<br/>クラシックバイオレット</div>
+          <span class="cardbase card-sb023"></span>
+          <span class="barcode">*OH0P8Q33KEG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">092<br/>サニースマイル</div>
+          <span class="cardbase card-cl024"></span>
+          <span class="barcode">*OHARHN3563G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">093<br/>あおぞラスタガール</div>
+          <span class="cardbase card-cl030"></span>
+          <span class="barcode">*OHAETM3561G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">094<br/>ロティオンブルー</div>
+          <span class="cardbase card-sb020"></span>
+          <span class="barcode">*OHARPK33KDG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">095<br/>ゴールデンフリージア</div>
+          <span class="cardbase card-fl008"></span>
+          <span class="barcode">*OHAC-B33SJG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">096<br/>グラマラスデニム</div>
+          <span class="cardbase card-cb024"></span>
+          <span class="barcode">*OHARHN3409G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">097<br/>キャンディテーラード</div>
+          <span class="cardbase card-sl020"></span>
+          <span class="barcode">*OHARPK34EJG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">098<br/>しとやかドレス</div>
+          <span class="cardbase card-sb002"></span>
+          <span class="barcode">*OHAP3E33KCG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">099<br/>ジューシーパラダイス</div>
+          <span class="cardbase card-sb022"></span>
+          <span class="barcode">*OHNA9PNGH8G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">100<br/>アクアクリスタル</div>
+          <span class="cardbase card-cl026"></span>
+          <span class="barcode">*OHNA3-NO9SG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">101<br/>おてんばタイユール</div>
+          <span class="cardbase card-cl029"></span>
+          <span class="barcode">*OHNDGINO9TG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">102<br/>トワイライトパピヨン</div>
+          <span class="cardbase card-cl028"></span>
+          <span class="barcode">*OHN0EJNO94G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">103<br/>ガーネットプリンセス</div>
+          <span class="cardbase card-fl009"></span>
+          <span class="barcode">*OHNL35NGPHG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">104<br/>レースアラモード</div>
+          <span class="cardbase card-cl023"></span>
+          <span class="barcode">*OHNQ7ONO9RG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">105<br/>ファンシーアリエス</div>
+          <span class="cardbase card-sb019"></span>
+          <span class="barcode">*OHNQCDNGH9G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">106<br/>ペッパーホットパンツ</div>
+          <span class="cardbase card-cb029"></span>
+          <span class="barcode">*OHNDGINH3NG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">107<br/>リカーモベスト</div>
+          <span class="cardbase card-cb027"></span>
+          <span class="barcode">*OHNDNENHGKG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">108<br/>スカーレットリリカ</div>
+          <span class="cardbase card-sl017"></span>
+          <span class="barcode">*OHN.Q9NHBTG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">109<br/>クローバーガーデン</div>
+          <span class="cardbase card-fb009"></span>
+          <span class="barcode">*OHNL35NFVBG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">110<br/>ジュディソワール</div>
+          <span class="cardbase card-sb021"></span>
+          <span class="barcode">*OHNQVWNGHBG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">111<br/>アルディツイスター</div>
+          <span class="cardbase card-cb023"></span>
+          <span class="barcode">*OHNQ7ONHGWG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">112<br/>シャカっとイーグルパンツ</div>
+          <span class="cardbase card-cb030"></span>
+          <span class="barcode">*OHN0WQNH3AG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">113<br/>パラソレッタワンピ</div>
+          <span class="cardbase card-cb025"></span>
+          <span class="barcode">*OHNQLANHG0G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">114<br/>さわやかペイサージュ</div>
+          <span class="cardbase card-sl019"></span>
+          <span class="barcode">*OHNQCDNHB3G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">115<br/>ジンジャーハーフ</div>
+          <span class="cardbase card-cl038"></span>
+          <span class="barcode">*OHPFYYQI18G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">116<br/>ペッピーギャング</div>
+          <span class="cardbase card-cb035"></span>
+          <span class="barcode">*OHCKWNQID%G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">117<br/>ピエニマレッサ</div>
+          <span class="cardbase card-sb024"></span>
+          <span class="barcode">*OHPYD9QWRTG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">118<br/>プラージュエスニック</div>
+          <span class="cardbase card-sb025"></span>
+          <span class="barcode">*OHCF05QWRGG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">119<br/>トマティーカウチン</div>
+          <span class="cardbase card-cb033"></span>
+          <span class="barcode">*OHCKELQIDXG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">120<br/>ふわ×2プリエール</div>
+          <span class="cardbase card-cl033"></span>
+          <span class="barcode">*OHCKELQI1SG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">121<br/>すずらんフォークテール</div>
+          <span class="cardbase card-sl022"></span>
+          <span class="barcode">*OHPY-HQWJFG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">122<br/>ロージーフレグランス</div>
+          <span class="cardbase card-fl011"></span>
+          <span class="barcode">*OHC-VYQVX9G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">123<br/>ポン×2らびセーター</div>
+          <span class="cardbase card-cl034"></span>
+          <span class="barcode">*OHPFVTQI1FG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">124<br/>ひなたっこワンピ</div>
+          <span class="cardbase card-cl036"></span>
+          <span class="barcode">*OHPF73QI1OG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">125<br/>ミモレスイフト</div>
+          <span class="cardbase card-cb038"></span>
+          <span class="barcode">*OHPFYYQID3G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">126<br/>リラアンベリール</div>
+          <span class="cardbase card-fb010"></span>
+          <span class="barcode">*OHP5TZQV5KG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">127<br/>ラブリープリマヴェール</div>
+          <span class="cardbase card-sl024"></span>
+          <span class="barcode">*OHPYD9QWJOG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">128<br/>トリッピーパイレーツ</div>
+          <span class="cardbase card-cb036"></span>
+          <span class="barcode">*OHPF73QI6NG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">129<br/>シエルパレード</div>
+          <span class="cardbase card-fl012"></span>
+          <span class="barcode">*OHP59UQVXOG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">130<br/>はんなりこまち</div>
+          <span class="cardbase card-sl025"></span>
+          <span class="barcode">*OHRHE3I-TXG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">131<br/>チョッキーミント</div>
+          <span class="cardbase card-sb027"></span>
+          <span class="barcode">*OHRH8YI-O5G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">132<br/>つなぎペインター</div>
+          <span class="cardbase card-cl037"></span>
+          <span class="barcode">*OHRJL-I.FXG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">133<br/>フォルシュトラッド</div>
+          <span class="cardbase card-cb031"></span>
+          <span class="barcode">*OHRHQFI.AUG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">134<br/>ファンシーダッフル</div>
+          <span class="cardbase card-cl032"></span>
+          <span class="barcode">*OH2HGQI.4CG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">135<br/>みずいろダウン</div>
+          <span class="cardbase card-cb032"></span>
+          <span class="barcode">*OH2HGQI.AHG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">136<br/>マスタードガール</div>
+          <span class="cardbase card-cl031"></span>
+          <span class="barcode">*OHRHQFI.4PG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">137<br/>パステルカルテット</div>
+          <span class="cardbase card-sl023"></span>
+          <span class="barcode">*OHRU3TI-TJG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">138<br/>プラッシュレディ</div>
+          <span class="cardbase card-fb011"></span>
+          <span class="barcode">*OHR9UKIE8DG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">139<br/>うき×2ひめりんご</div>
+          <span class="cardbase card-sl026"></span>
+          <span class="barcode">*OH2K6ZI-TKG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">140<br/>ホイップアームニット</div>
+          <span class="cardbase card-cb034"></span>
+          <span class="barcode">*OH2HURI.AVG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">141<br/>ボーイッシュアカデミー</div>
+          <span class="cardbase card-cl039"></span>
+          <span class="barcode">*OHR9PJI.F%G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">142<br/>オアシスフローリア</div>
+          <span class="cardbase card-sb028"></span>
+          <span class="barcode">*OH2KHUI-OSG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">143<br/>ティアードクロシェット</div>
+          <span class="cardbase card-fl010"></span>
+          <span class="barcode">*OH27WXIE3WG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">144<br/>ハンサムウエスタン</div>
+          <span class="cardbase card-cb037"></span>
+          <span class="barcode">*OHRJL-I.ARG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">145<br/>レーシーマスカット</div>
+          <span class="cardbase card-cl035"></span>
+          <span class="barcode">*OHRJXBI.FJG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">146<br/>リボンラッピングドレス</div>
+          <span class="cardbase card-sb026"></span>
+          <span class="barcode">*OH2K6ZI-OEG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">147<br/>ガーリッシュトレンチ</div>
+          <span class="cardbase card-cb001"></span>
+          <span class="barcode">*O2S6Q7A0EGG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">エレガントドレス</div>
+          <span class="cardbase card-fb001"></span>
+          <span class="barcode">*ONHCU5APFEA *</span>
+        </div>
+        <div class="card">
+          <div class="card-title">おじょうひんチェック</div>
+          <span class="cardbase card-cb004"></span>
+          <span class="barcode">*OUQV-9AU5JD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">ダボかわオーバーオール</div>
+          <span class="cardbase card-cl006"></span>
+          <span class="barcode">*ON2R2VAKUYA*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">パラダイスガール </div>
+          <span class="cardbase card-cl001"></span>
+          <span class="barcode">*ONHCU5AKU3A*</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card-section">
+      <h1 class="section-title">F</h1>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title">001<br/>あつぞこピンクスニーカー</div>
+          <span class="cardbase card-cs001"></span>
+          <span class="barcode">*OUSGC3RO6KD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">002<br/>カラフルハートソックス</div>
+          <span class="cardbase card-cs004"></span>
+          <span class="barcode">*OUMQ9CD%A-D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">003<br/>みずいろハイカット</div>
+          <span class="cardbase card-cs007"></span>
+          <span class="barcode">*OUSHSW6P5XD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">004<br/>あみあげブーツ</div>
+          <span class="cardbase card-ss001"></span>
+          <span class="barcode">*OUSGKIRDH7D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">005<br/>レーシーヒール</div>
+          <span class="cardbase card-fs003"></span>
+          <span class="barcode">*OUSH5663UID*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">006<br/>なでしこトングサンダル</div>
+          <span class="cardbase card-ss006"></span>
+          <span class="barcode">*OUMQHN6EGUD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">007<br/>ジュエリーサンダル</div>
+          <span class="cardbase card-fs001"></span>
+          <span class="barcode">*OUSGCT686OD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">008<br/>フラワーくしゅブーツ</div>
+          <span class="cardbase card-cs002"></span>
+          <span class="barcode">*OUMPDF65N5D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">009<br/>星つきＪ.Ｌｏ風ブーツ</div>
+          <span class="cardbase card-cs003"></span>
+          <span class="barcode">*OUSH5D6PT2D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">010<br/>ボン×２レッグウォーマー</div>
+          <span class="cardbase card-ss002"></span>
+          <span class="barcode">*OUMPDF6EG-D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">011<br/>クロスリボン</div>
+          <span class="cardbase card-ss003"></span>
+          <span class="barcode">*OUSG.F6JU1D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">012<br/>パステルラブスニーカー</div>
+          <span class="cardbase card-cs005"></span>
+          <span class="barcode">*OUSHGBROUND*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">013<br/>ピンクリボンヒール</div>
+          <span class="cardbase card-fs002"></span>
+          <span class="barcode">*OUMP ER9H9D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">014<br/>ジャンピングエアバッシュ</div>
+          <span class="cardbase card-cs008"></span>
+          <span class="barcode">*OUMQJ2RTHID*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">015<br/>グリーンティンカーヒール</div>
+          <span class="cardbase card-ss005"></span>
+          <span class="barcode">*OUSHGO6UOXD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">016<br/>レインボースニーカー</div>
+          <span class="cardbase card-cs006"></span>
+          <span class="barcode">*OUMQHA60O8D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">017<br/>フリ×２ローヒール</div>
+          <span class="cardbase card-ss004"></span>
+          <span class="barcode">*OUMQ9CDKT4D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">018<br/>ホワイトあつぞこサンダル</div>
+          <span class="cardbase card-cs009"></span>
+          <span class="barcode">*OUSHII60O9D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">019<br/>さわやかレモンスニーカー</div>
+          <span class="cardbase card-cs010"></span>
+          <span class="barcode">*OUMQZ465NDD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">020<br/>トリオリボンブーツ</div>
+          <span class="cardbase card-ss008"></span>
+          <span class="barcode">*OUMQUI6EG7D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">021<br/>コバルトカフスヒール</div>
+          <span class="cardbase card-ss007"></span>
+          <span class="barcode">*OUSHSW6PNWD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">022<br/>クールスターソックス</div>
+          <span class="cardbase card-cs011"></span>
+          <span class="barcode">*OUSO366PT0D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">023<br/>アラビアンミュール</div>
+          <span class="cardbase card-ss010"></span>
+          <span class="barcode">*OUUT FG8R1D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">024<br/>しま×2ハイヒール</div>
+          <span class="cardbase card-cs015"></span>
+          <span class="barcode">*OUVRI0GJEDD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">025<br/>シャイニープラネット</div>
+          <span class="cardbase card-cs014"></span>
+          <span class="barcode">*OUUFQKT7V6D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">026<br/>ジッパーパンプス</div>
+          <span class="cardbase card-cs019"></span>
+          <span class="barcode">*OUVNADTFQND*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">027<br/>オリーブローファー</div>
+          <span class="cardbase card-cs018"></span>
+          <span class="barcode">*OUUG4RTKDPD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">028<br/>パッションピンクブーツ</div>
+          <span class="cardbase card-ss009"></span>
+          <span class="barcode">*OUVB.GGR94D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">029<br/>リボンあみあげヒール</div>
+          <span class="cardbase card-fs005"></span>
+          <span class="barcode">*OUVBMNTS3AD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">030<br/>スマートパンジー</div>
+          <span class="cardbase card-cs012"></span>
+          <span class="barcode">*OUUFN7G8WID*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">031<br/>ミルキーアーガイル</div>
+          <span class="cardbase card-cs016"></span>
+          <span class="barcode">*OUUFJVT28QD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">032<br/>ディープミントブーツ</div>
+          <span class="cardbase card-ss012"></span>
+          <span class="barcode">*OUUFHOTXWXD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">033<br/>クイーンローズ</div>
+          <span class="cardbase card-fs004"></span>
+          <span class="barcode">*OUUTF8TC8HD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">034<br/>ヒーロースニーカーブーツ</div>
+          <span class="cardbase card-cs013"></span>
+          <span class="barcode">*OUVRQ9TKDFD*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">035<br/>エレカジローファー</div>
+          <span class="cardbase card-cs017"></span>
+          <span class="barcode">*OUVRYIG39ND*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">036<br/>ビビッドコルクソール</div>
+          <span class="cardbase card-ss011"></span>
+          <span class="barcode">*OUVR5ET72-D*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">037<br/>ベルクロラディッシュ</div>
+          <span class="cardbase card-cs021"></span>
+          <span class="barcode">*OH0PR-9JDQG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">038<br/>スカッシュヒールスニーカー</div>
+          <span class="cardbase card-cs022"></span>
+          <span class="barcode">*OHAR6K9JDDG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">039<br/>スキップリボンパンプス</div>
+          <span class="cardbase card-cs026"></span>
+          <span class="barcode">*OHARYN9JQ%G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">040<br/>フレッシュマンゴスチン</div>
+          <span class="cardbase card-ss015"></span>
+          <span class="barcode">*OH0NJI9IWTG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">041<br/>エーデルヴィオレッタ</div>
+          <span class="cardbase card-fs006"></span>
+          <span class="barcode">*OHACWI9IRPG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">042<br/>スターダストハイヒール</div>
+          <span class="cardbase card-cs023"></span>
+          <span class="barcode">*OH0P8J9JD6G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">043<br/>ラティオウエスタン</div>
+          <span class="cardbase card-cs029"></span>
+          <span class="barcode">*OH0CC.9JD9G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">044<br/>でこリボンヒール</div>
+          <span class="cardbase card-ss013"></span>
+          <span class="barcode">*OH0N4E9IWFG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">045<br/>とんがりオレンジピール</div>
+          <span class="cardbase card-cs024"></span>
+          <span class="barcode">*OHARHL9JQXG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">046<br/>リゾートクロスアップ</div>
+          <span class="cardbase card-ss016"></span>
+          <span class="barcode">*OHA2XQ9IWGG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">047<br/>ピーチデコレヒール</div>
+          <span class="cardbase card-fs007"></span>
+          <span class="barcode">*OHNLSUG.ONG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">048<br/>スイートマカロン</div>
+          <span class="cardbase card-ss017"></span>
+          <span class="barcode">*OHN.QHG.TEG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">049<br/>ピスタッチブーツ</div>
+          <span class="cardbase card-cs028"></span>
+          <span class="barcode">*OHN0E-G NWG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">050<br/>カモミールサンダル</div>
+          <span class="cardbase card-ss019"></span>
+          <span class="barcode">*OHNQ29G.TSG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">051<br/>カルカーニョメッシュ</div>
+          <span class="cardbase card-ss018"></span>
+          <span class="barcode">*OHNANAG.T5G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">052<br/>オレンジメッシュスニーカー</div>
+          <span class="cardbase card-cs027"></span>
+          <span class="barcode">*OHNDPAG N1G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">053<br/>にじいろヒール</div>
+          <span class="cardbase card-cs025"></span>
+          <span class="barcode">*OHNQLOG NVG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">054<br/>リトルハートヒール</div>
+          <span class="cardbase card-ss014"></span>
+          <span class="barcode">*OH03HWG.TDG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">055<br/>パーリッシュヒール</div>
+          <span class="cardbase card-fs008"></span>
+          <span class="barcode">*OH0D.HG.OAG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">056<br/>ひだまりソックス</div>
+          <span class="cardbase card-cs020"></span>
+          <span class="barcode">*OHNATEG AAG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">057<br/>メディオアーミーブーツ</div>
+          <span class="cardbase card-cs030"></span>
+          <span class="barcode">*OHPLXWUTVHG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">058<br/>ラセットリーフブーツ</div>
+          <span class="cardbase card-ss020"></span>
+          <span class="barcode">*OHPYWCUTQQG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">059<br/>サウスアイランド</div>
+          <span class="cardbase card-ss024"></span>
+          <span class="barcode">*OHPYDHUT7KG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">060<br/>リンクルフローレット</div>
+          <span class="cardbase card-cs036"></span>
+          <span class="barcode">*OHPF7TUTVJG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">061<br/>チッパーラバーソール</div>
+          <span class="cardbase card-cs033"></span>
+          <span class="barcode">*OHCKEKUTVIG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">062<br/>スーオパッショーネ</div>
+          <span class="cardbase card-ss025"></span>
+          <span class="barcode">*OHCF0GUT7%G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">063<br/>ハートブランシェ</div>
+          <span class="cardbase card-fs009"></span>
+          <span class="barcode">*OHC-2TUN1EG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">064<br/>トゥインクルウォーマー</div>
+          <span class="cardbase card-ss022"></span>
+          <span class="barcode">*OHPY-VUTQ6G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">065<br/>ハートジップアップ</div>
+          <span class="cardbase card-cs039"></span>
+          <span class="barcode">*OHCKQ UTVFG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">066<br/>ブラウンカウスニーカー</div>
+          <span class="cardbase card-cs031"></span>
+          <span class="barcode">*OHCFSVUTV2G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">067<br/>ハッピーボーダーソックス</div>
+          <span class="cardbase card-cs034"></span>
+          <span class="barcode">*OH2HUQYUSGG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">068<br/>クレアオープンヒール</div>
+          <span class="cardbase card-cs037"></span>
+          <span class="barcode">*OHRJ.BYUSCG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">069<br/>シルキースノー</div>
+          <span class="cardbase card-ss023"></span>
+          <span class="barcode">*OHRU3MYS%2G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">070<br/>フルールオランジェ</div>
+          <span class="cardbase card-fs011"></span>
+          <span class="barcode">*OHR9U.YS47G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">071<br/>マリンプロムナード</div>
+          <span class="cardbase card-ss026"></span>
+          <span class="barcode">*OH2KV4YS%1G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">072<br/>ブラックピッカンシューズ</div>
+          <span class="cardbase card-cs032"></span>
+          <span class="barcode">*OH2HGJYUS4G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">073<br/>ルミナスタッズブーツ</div>
+          <span class="cardbase card-cs038"></span>
+          <span class="barcode">*OH27A.YUS7G*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">074<br/>スイートロリポップ</div>
+          <span class="cardbase card-ss021"></span>
+          <span class="barcode">*OHRUSXYUNOG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">075<br/>ビューティフルセレブ</div>
+          <span class="cardbase card-fs010"></span>
+          <span class="barcode">*OH27W YS4CG*</span>
+        </div>
+        <div class="card">
+          <div class="card-title">076<br/>シャルムブーツウォーマー</div>
+          <span class="cardbase card-cs035"></span>
+          <span class="barcode">*OHRJXPYUS3G*</span>
+        </div>
+      </div>
+    </div>
 
-<br/><br/><h1><span style="color:red;display: table;margin: 0 auto;">S</span></h1>
-<table class="center">
-  <tr>
-    <th>001<br/>ミラクルファンデーション<br/><span class="cardbase card-sp003"></span><br/><span class="barcode">*OUSG.TRI2WD*</span></th>
-    <th>002<br/>マジカルヘアカラー<br/><span class="cardbase card-sp002"></span><br/><span class="barcode">*OUMPDGRI28D*</span></th>
-    <th>003<br/>ミラクルヘアカラー<br/><span class="cardbase card-sp001"></span><br/><span class="barcode">*OUSGK1RI2ID*</span></th>
-    <th>004<br/>マジカルタイムプラス<br/><span class="cardbase card-sp004"></span><br/><span class="barcode">*OUMQNQE0JXD*</span></th>
-    <th>005<br/>ミラクルフットカラー<br/><span class="cardbase card-sp005"></span><br/><span class="barcode">*OUSHRDRI29D*</span></th>
-    <th>006<br/>ミラクルアイウェア<br/><span class="cardbase card-sp006"></span><br/><span class="barcode">*OUUTSA3A-7D*</span></th>
-    <th>007<br/>マジカルアイウェア<br/><span class="cardbase card-sp007"></span><br/><span class="barcode">*OUVBWN3A-VD*</span></th>
-    <th>008<br/>ゴージャスアイウェア<br/><span class="cardbase card-sp008"></span><br/><span class="barcode">*OHAC-SBLTCG*</span></th>
-    <th>009<br/>マジカルハットカラー<br/><span class="cardbase card-sp017"></span><br/><span class="barcode">*OHCSPPW4%3G*</span></th>
-  </tr>
-</table>
+    <p>Barcode data from <a href="https://nao-yoshi.seesaa.net/article/481153607.html">here</a>.</p>
+  </div>
 
+  <div id="snackbar">Copied to clipboard</div>
 
-<br/><br/><h1><span style="color:red;display: table;margin: 0 auto;">H</span></h1>
-<table class="center">
-  <tr>
-    <th>001<br/>さらさらロング<br/><span class="cardbase card-hr016"></span><br/><span class="barcode">*OUMLMHQ697D*</span></th>
-    <th>002<br/>さわやかポニーテール<br/><span class="cardbase card-hr026"></span><br/><span class="barcode">*OUMMJSQ69TD*</span></th>
-    <th>003<br/>おひめさまヘア<br/><span class="cardbase card-hr001"></span><br/><span class="barcode">*OUSGKGQ697D*</span></th>
-    <th>004<br/>ホットバンダナ<br/><span class="cardbase card-hr503"></span><br/><span class="barcode">*OUSG.6QG9GD*</span></th>
-    <th>005<br/>マリンヘア<br/><span class="cardbase card-hr005"></span><br/><span class="barcode">*OUSHROQ69WD*</span></th>
-    <th>006<br/>クールニット<br/><span class="cardbase card-hr504"></span><br/><span class="barcode">*OUMQN9DVFHD*</span></th>
-    <th>007<br/>たてまきガーリーヘア<br/><span class="cardbase card-hr011"></span><br/><span class="barcode">*OUSHERQ69TD*</span></th>
-    <th>008<br/>ロングアップヘア<br/><span class="cardbase card-hr017"></span><br/><span class="barcode">*O3B36NFU7JG*</span></th>
-    <th>009<br/>げんきっ子ヘア<br/><span class="cardbase card-hr004"></span><br/><span class="barcode">*OUMQ9BQ698D*</span></th>
-    <th>010<br/>ぴょん×２あみこみヘア<br/><span class="cardbase card-hr007"></span><br/><span class="barcode">*OUSHPJQ699D*</span></th>
-  </tr>
-  <tr>
-    <th>011<br/>プリティたてロール<br/><span class="cardbase card-hr002"></span><br/><span class="barcode">*OUMPDRQ69VD*</span></th>
-    <th>012<br/>ポンパドールショート<br/><span class="cardbase card-hr008"></span><br/><span class="barcode">*OUMQUUQ69SD*</span></th>
-    <th>013<br/>モンキーショートヘア<br/><span class="cardbase card-hr012"></span><br/><span class="barcode">*OUML48Q69GD*</span></th>
-    <th>014<br/>スパイシーよこむすび<br/><span class="cardbase card-hr013"></span><br/><span class="barcode">*OUSOABQ696D*</span></th>
-    <th>015<br/>アメカジキャップ<br/><span class="cardbase card-hr502"></span><br/><span class="barcode">*OUMP CQRR2D*</span></th>
-    <th>016<br/>ふんわりセミロング<br/><span class="cardbase card-hr027"></span><br/><span class="barcode">*OUSPY5Q69GD*</span></th>
-    <th>017<br/>くるりんマジックカール<br/><span class="cardbase card-hr006"></span><br/><span class="barcode">*OUMQG0Q69JD*</span></th>
-    <th>018<br/>プチおだんごヘア<br/><span class="cardbase card-hr003"></span><br/><span class="barcode">*OUSG.6Q69ID*</span></th>
-    <th>019<br/>ぱつんとバングスヘア<br/><span class="cardbase card-hr009"></span><br/><span class="barcode">*OUSHI3Q69FD*</span></th>
-    <th>020<br/>リボンキャスケット<br/><span class="cardbase card-hr505"></span><br/><span class="barcode">*OUSHF%QWEFD*</span></th>
-  </tr>
-  <tr>
-    <th>021<br/>クールビューティーヘア<br/><span class="cardbase card-hr010"></span><br/><span class="barcode">*OUMQZEQ695D*</span></th>
-    <th>022<br/>ファンキーアフロ<br/><span class="cardbase card-hr022"></span><br/><span class="barcode">*OUUGO0FU6CD*</span></th>
-    <th>023<br/>はなやかヴィーナスヘア<br/><span class="cardbase card-hr020"></span><br/><span class="barcode">*OUUGBBFU66D*</span></th>
-    <th>024<br/>チェーンストロー<br/><span class="cardbase card-hr507"></span><br/><span class="barcode">*OUVBVW46UUD*</span></th>
-    <th>025<br/>M×2サイドカール<br/><span class="cardbase card-hr015"></span><br/><span class="barcode">*OUVRSWFU6SD*</span></th>
-    <th>026<br/>オリエンタルシニヨン<br/><span class="cardbase card-hr014"></span><br/><span class="barcode">*OUUFQJFU64D*</span></th>
-    <th>027<br/>そとまきワンレグヘア<br/><span class="cardbase card-hr021"></span><br/><span class="barcode">*OUVNTOFU6UD*</span></th>
-    <th>028<br/>ピクシーニットキャップ<br/><span class="cardbase card-hr506"></span><br/><span class="barcode">*OUUTWV4G1XD*</span></th>
-    <th>029<br/>あみこみウェービーヘア<br/><span class="cardbase card-hr023"></span><br/><span class="barcode">*OUVNLJFU62D*</span></th>
-    <th>030<br/>ロマンスウェーブヘア<br/><span class="cardbase card-hr019"></span><br/><span class="barcode">*OUVN36FU6GD*</span></th>
-  </tr>
-  <tr>
-    <th>031<br/>モコ×2ラブリーヘア<br/><span class="cardbase card-hr030"></span><br/><span class="barcode">*OHAETI558XG*</span></th>
-    <th>032<br/>キリっとカウガール<br/><span class="cardbase card-hr509"></span><br/><span class="barcode">*OH005T4DBEG*</span></th>
-    <th>033<br/>プリティウルフ<br/><span class="cardbase card-hr033"></span><br/><span class="barcode">*OH0ALX55PNG*</span></th>
-    <th>034<br/>みつあみポップヘア<br/><span class="cardbase card-hr031"></span><br/><span class="barcode">*OH0CVW558KG*</span></th>
-    <th>035<br/>あげあげパイナップル<br/><span class="cardbase card-hr029"></span><br/><span class="barcode">*OHNDGZFH0HG*</span></th>
-    <th>036<br/>しなやかセレブ<br/><span class="cardbase card-hr032"></span><br/><span class="barcode">*OH0QDKFH0IG*</span></th>
-    <th>037<br/>メロンサンバイザー<br/><span class="cardbase card-hr508"></span><br/><span class="barcode">*OH0D.NFAJ8G*</span></th>
-    <th>038<br/>ダンシングショートヘア<br/><span class="cardbase card-hr025"></span><br/><span class="barcode">*OHNQLFFH0TG*</span></th>
-    <th>039<br/>ツンツンおちゃめヘア<br/><span class="cardbase card-hr028"></span><br/><span class="barcode">*OHN0ECFH0UG*</span></th>
-    <th>040<br/>アクティブドレッド<br/><span class="cardbase card-hr510"></span><br/><span class="barcode">*OHP5T-MQTTG*</span></th>
-  </tr>
-  <tr>
-    <th>041<br/>キューティーカール<br/><span class="cardbase card-hr038"></span><br/><span class="barcode">*OHPFY-MI3QG*</span></th>
-    <th>042<br/>ツイストスティックヘア<br/><span class="cardbase card-hr024"></span><br/><span class="barcode">*OHPYDTMI3DG*</span></th>
-    <th>043<br/>そよかぜカールヘア<br/><span class="cardbase card-hr034"></span><br/><span class="barcode">*OHPFVPMI33G*</span></th>
-    <th>044<br/>ふんわりマッシュベレー<br/><span class="cardbase card-hr511"></span><br/><span class="barcode">*OHC-VEMQTGG*</span></th>
-    <th>045<br/>クリッポンヘア<br/><span class="cardbase card-hr037"></span><br/><span class="barcode">*OHRJ.5K.6AG*</span></th>
-    <th>046<br/>おさんぽニット<br/><span class="cardbase card-hr512"></span><br/><span class="barcode">*OH27-WKXQEG*</span></th>
-    <th>047<br/>ミスティレーヌヘア<br/><span class="cardbase card-hr036"></span><br/><span class="barcode">*OH2H59K.6NG*</span></th>
-    <th>048<br/>クロスハンチング<br/><span class="cardbase card-hr513"></span><br/><span class="barcode">*OHR95VKXQ5G*</span></th>
-    <th>049<br/>あみ×2ハーフカット<br/><span class="cardbase card-hr035"></span><br/><span class="barcode">*OHRJXGK.D%G*</span></th>
-    <th>LH-003<br/>クレオパトラヘア<br/><span class="cardbase card-hr018"></span><br/><span class="barcode">*ONHSUEAC-2A *</span></th>
-  </tr>
-</table>
-<table class="center">
-  <tr>
-    <th>LH-005<br/>しとやかハット<br/><span class="cardbase card-hr501"></span><br/><span class="barcode">*ONHCUUA4WXA*</span></th>
-  </tr>
-</table>
+  <script>
+    const container = document.querySelector('.container');
 
-
-<br/><br/><h1><span style="color:red;display: table;margin: 0 auto;">D</span></h1>
-<table class="center">
-  <tr>
-    <th>001<br/>ラブリーストロベリー<br/><span class="cardbase card-sl003"></span><br/><span class="barcode">*OUSG.QC6BVD*</span></th>
-    <th>002<br/>プリントルーズ<br/><span class="cardbase card-cb009"></span><br/><span class="barcode">*OUSHY67K2ID*</span></th>
-    <th>003<br/>ジャスミンドレス<br/><span class="cardbase card-fb004"></span><br/><span class="barcode">*OUMQ9A7UJ2D*</span></th>
-    <th>004<br/>ふんわりパステル<br/><span class="cardbase card-sl008"></span><br/><span class="barcode">*OUMQUGCTU7D*</span></th>
-    <th>005<br/>パステルフルーティー<br/><span class="cardbase card-cl005"></span><br/><span class="barcode">*OUSHF07AUCD*</span></th>
-    <th>006<br/>ピタＴガール<br/><span class="cardbase card-cl004"></span><br/><span class="barcode">*OUMQ9N7KVPD*</span></th>
-    <th>007<br/>メタリックダウン<br/><span class="cardbase card-cb003"></span><br/><span class="barcode">*OUSG.P72VQD*</span></th>
-    <th>008<br/>フェアリーリーフ<br/><span class="cardbase card-sb008"></span><br/><span class="barcode">*OUMQJE7H84D*</span></th>
-    <th>009<br/>きらパールドレス<br/><span class="cardbase card-fb002"></span><br/><span class="barcode">*OUMP BCVI5D*</span></th>
-    <th>010<br/>ピチパーカーニット<br/><span class="cardbase card-cb011"></span><br/><span class="barcode">*OUSO3B7K29D*</span></th>
-  </tr>
-  <tr>
-    <th>011<br/>花いっぱいドレス<br/><span class="cardbase card-fl001"></span><br/><span class="barcode">*O3BT5JSQW3G*</span></th>
-    <th>012<br/>ムーンチャイナ<br/><span class="cardbase card-sb005"></span><br/><span class="barcode">*OUSHFJCDH1D*</span></th>
-    <th>013<br/>クールレインボー<br/><span class="cardbase card-cb006"></span><br/><span class="barcode">*O3OH9PFAWRG*</span></th>
-    <th>014<br/>ルーズセーター<br/><span class="cardbase card-cb007"></span><br/><span class="barcode">*OUSHPICGB1D*</span></th>
-    <th>015<br/>キャンディーダボ<br/><span class="cardbase card-cl007"></span><br/><span class="barcode">*OUSHSUCWBAD*</span></th>
-    <th>016<br/>ダボッとジップアップ<br/><span class="cardbase card-cl010"></span><br/><span class="barcode">*O3OH4749GJG*</span></th>
-    <th>017<br/>スポＭＩＸジャンパー<br/><span class="cardbase card-cl009"></span><br/><span class="barcode">*OUSHIS7KVQD*</span></th>
-    <th>018<br/>パイナップルサマー<br/><span class="cardbase card-sl007"></span><br/><span class="barcode">*O3BG81SDILG*</span></th>
-    <th>019<br/>カジュアルポップ<br/><span class="cardbase card-cl002"></span><br/><span class="barcode">*O3OUGUFAQUG*</span></th>
-    <th>020<br/>ミリタリーガール<br/><span class="cardbase card-cb005"></span><br/><span class="barcode">*O3BTXESD.6G*</span></th>
-  </tr>
-  <tr>
-    <th>021<br/>ファンシーマーガレット<br/><span class="cardbase card-sl005"></span><br/><span class="barcode">*O3BTXES-37G*</span></th>
-    <th>022<br/>キューティーピンクドレス<br/><span class="cardbase card-fl002"></span><br/><span class="barcode">*O3OU2GS-09G*</span></th>
-    <th>023<br/>アクティブパーカー<br/><span class="cardbase card-cl008"></span><br/><span class="barcode">*O3OHEJ49G9G*</span></th>
-    <th>024<br/>そらいろドレス<br/><span class="cardbase card-fb003"></span><br/><span class="barcode">*O3BT1FSVNNG*</span></th>
-    <th>025<br/>キラリンパープル<br/><span class="cardbase card-sb003"></span><br/><span class="barcode">*OUSG.77NCKD*</span></th>
-    <th>026<br/>トロピカルスノー<br/><span class="cardbase card-sb007"></span><br/><span class="barcode">*O3BG8146VDG*</span></th>
-    <th>027<br/>だん×２フリルキャミ<br/><span class="cardbase card-cb008"></span><br/><span class="barcode">*O3OHE8SOVCG*</span></th>
-    <th>028<br/>レーシーフリル<br/><span class="cardbase card-sb006"></span><br/><span class="barcode">*O3OH9CFC08G*</span></th>
-    <th>029<br/>ハニードレープ<br/><span class="cardbase card-fl003"></span><br/><span class="barcode">*OUSG.CCDP5D*</span></th>
-    <th>030<br/>ピチダボスタイル<br/><span class="cardbase card-cl003"></span><br/><span class="barcode">*OUSG.Q7AUPD*</span></th>
-  </tr>
-  <tr>
-    <th>031<br/>ビタミンガール<br/><span class="cardbase card-cl011"></span><br/><span class="barcode">*O3BG3V4U5VG*</span></th>
-    <th>032<br/>ドルフィンクイーン<br/><span class="cardbase card-sb009"></span><br/><span class="barcode">*OUSHY67XDHD*</span></th>
-    <th>033<br/>るんるんフラワー<br/><span class="cardbase card-sl006"></span><br/><span class="barcode">*OUMQQHC119D*</span></th>
-    <th>034<br/>ピチッと黒Ｔ<br/><span class="cardbase card-cb002"></span><br/><span class="barcode">*OUMP P7FCPD*</span></th>
-    <th>035<br/>スイートエプロン<br/><span class="cardbase card-sl002"></span><br/><span class="barcode">*O3OU2G4JV-G*</span></th>
-    <th>036<br/>パステルロゴワンピ<br/><span class="cardbase card-cb010"></span><br/><span class="barcode">*O3OH4ISTI.G*</span></th>
-    <th>037<br/>ふんわりエンジェル<br/><span class="cardbase card-sl001"></span><br/><span class="barcode">*OULMS4NAEID*</span></th>
-    <th>038<br/>シトラスフリルドレス<br/><span class="cardbase card-fl004"></span><br/><span class="barcode">*OUMQR0CI2BD*</span></th>
-    <th>039<br/>スイートアクアマリン<br/><span class="cardbase card-sb011"></span><br/><span class="barcode">*OUSO3O7CVXD*</span></th>
-    <th>040<br/>ロイヤルターコイズ<br/><span class="cardbase card-fb005"></span><br/><span class="barcode">*OUSHFWC%QWD*</span></th>
-  </tr>
-  <tr>
-    <th>041<br/>サンライトハニー<br/><span class="cardbase card-sl010"></span><br/><span class="barcode">*OUMQZ7C11JD*</span></th>
-    <th>042<br/>クールミントタイ<br/><span class="cardbase card-sb010"></span><br/><span class="barcode">*OUMQ-B7NC6D*</span></th>
-    <th>043<br/>チャーミングアプリコット<br/><span class="cardbase card-sl009"></span><br/><span class="barcode">*OUSHYEC11-D*</span></th>
-    <th>044<br/>フローラルカーネーション<br/><span class="cardbase card-sl016"></span><br/><span class="barcode">*OUQIQ4N2-HD*</span></th>
-    <th>045<br/>アメリカンスターガール<br/><span class="cardbase card-sb018"></span><br/><span class="barcode">*OUQIU6N7SFD*</span></th>
-    <th>046<br/>ノリノリ85<br/><span class="cardbase card-cl022"></span><br/><span class="barcode">*OUQJAIN4E1D*</span></th>
-    <th>047<br/>レトロプリーツ<br/><span class="cardbase card-cl016"></span><br/><span class="barcode">*OUUFJTS1ESD*</span></th>
-    <th>048<br/>プリティーピンクデビル<br/><span class="cardbase card-sb016"></span><br/><span class="barcode">*OUUFJ4SV-ID*</span></th>
-    <th>049<br/>ひまわりサンドレス<br/><span class="cardbase card-fl005"></span><br/><span class="barcode">*OUVBHXSQFPD*</span></th>
-    <th>050<br/>ゴーゴーミニワンピ<br/><span class="cardbase card-cl017"></span><br/><span class="barcode">*OUVRY5SOWKD*</span></th>
-  </tr>
-  <tr>
-    <th>051<br/>スポカジカーゴ<br/><span class="cardbase card-cb018"></span><br/><span class="barcode">*OUUF-C5JJ1D*</span></th>
-    <th>052<br/>おすましアーガイル<br/><span class="cardbase card-cb017"></span><br/><span class="barcode">*OUVRERFC-SD*</span></th>
-    <th>053<br/>グリッターショート<br/><span class="cardbase card-cb021"></span><br/><span class="barcode">*OUVNN%FC-FD*</span></th>
-    <th>054<br/>フェミニンBガール<br/><span class="cardbase card-cl020"></span><br/><span class="barcode">*OUUGTX50DSD*</span></th>
-    <th>055<br/>クリアライムガール<br/><span class="cardbase card-sl013"></span><br/><span class="barcode">*OUVRP1SD40D*</span></th>
-    <th>056<br/>ひらミニプチセレブ<br/><span class="cardbase card-cb016"></span><br/><span class="barcode">*OUUFJFSTE-D*</span></th>
-    <th>057<br/>シャイニーカリビアン<br/><span class="cardbase card-sb017"></span><br/><span class="barcode">*OUVRY5S4SJD*</span></th>
-    <th>058<br/>カナリアワンピ<br/><span class="cardbase card-sl015"></span><br/><span class="barcode">*OUVRSIS99-D*</span></th>
-    <th>059<br/>ヴィクトリアンロゼッタ<br/><span class="cardbase card-fb006"></span><br/><span class="barcode">*OUUTMHFPO2D*</span></th>
-    <th>060<br/>ポップンスイーツ<br/><span class="cardbase card-cl013"></span><br/><span class="barcode">*OUVRFK50D6D*</span></th>
-  </tr>
-  <tr>
-    <th>061<br/>サファイアベルボトム<br/><span class="cardbase card-cb015"></span><br/><span class="barcode">*OUVRITSORRD*</span></th>
-    <th>062<br/>キューティーレッド<br/><span class="cardbase card-sb013"></span><br/><span class="barcode">*OUVRFXSQKSD*</span></th>
-    <th>063<br/>ビビットワンピ<br/><span class="cardbase card-sb004"></span><br/><span class="barcode">*OUUTTKFC03D*</span></th>
-    <th>064<br/>メルヘンドール<br/><span class="cardbase card-sl014"></span><br/><span class="barcode">*OUUFU3S%-KD*</span></th>
-    <th>065<br/>スパイシーサファリ<br/><span class="cardbase card-cb013"></span><br/><span class="barcode">*OUVRF%SORED*</span></th>
-    <th>066<br/>ストロベリーチアガール<br/><span class="cardbase card-cl014"></span><br/><span class="barcode">*OUUFUGS1E7D*</span></th>
-    <th>067<br/>カモフラキャッツ<br/><span class="cardbase card-cb012"></span><br/><span class="barcode">*OUUFR%SIKBD*</span></th>
-    <th>068<br/>ガーランドレース<br/><span class="cardbase card-fl006"></span><br/><span class="barcode">*OUUTWTS4AAD*</span></th>
-    <th>069<br/>ボーイッシュレイヤード<br/><span class="cardbase card-cl019"></span><br/><span class="barcode">*OUVNAOS1ESD*</span></th>
-    <th>070<br/>ちびGトラッド<br/><span class="cardbase card-cb020"></span><br/><span class="barcode">*OUUGT05JWJD*</span></th>
-  </tr>
-  <tr>
-    <th>071<br/>スノーファンタジー<br/><span class="cardbase card-sb015"></span><br/><span class="barcode">*OUVRS2S%5ED*</span></th>
-    <th>072<br/>オレンジヒップハング<br/><span class="cardbase card-cl018"></span><br/><span class="barcode">*OUUF-7S63JD*</span></th>
-    <th>073<br/>ピンキーロックンロール<br/><span class="cardbase card-cl021"></span><br/><span class="barcode">*OUVNH0F7SBD*</span></th>
-    <th>074<br/>ミルキーピンクボレロ<br/><span class="cardbase card-sl011"></span><br/><span class="barcode">*OUVRROS99WD*</span></th>
-    <th>075<br/>オフショルアーミー<br/><span class="cardbase card-cb019"></span><br/><span class="barcode">*OUVNAOSTEUD*</span></th>
-    <th>076<br/>シンフォニーフリル<br/><span class="cardbase card-sb012"></span><br/><span class="barcode">*OUUFGWS%5QD*</span></th>
-    <th>077<br/>バニラセーター<br/><span class="cardbase card-cl012"></span><br/><span class="barcode">*OUUFGJS1E7D*</span></th>
-    <th>078<br/>プリンセスアラベスク<br/><span class="cardbase card-sl012"></span><br/><span class="barcode">*OUUFRKSIS5D*</span></th>
-    <th>079<br/>ロマンスエンパイア<br/><span class="cardbase card-fb007"></span><br/><span class="barcode">*OUVBVVSAFOD*</span></th>
-    <th>080<br/>サンセットビーチ<br/><span class="cardbase card-sb014"></span><br/><span class="barcode">*OUUFU3S4SJD*</span></th>
-  </tr>
-  <tr>
-    <th>081<br/>キューティーセーラー<br/><span class="cardbase card-sl004"></span><br/><span class="barcode">*OHACEI34EWG*</span></th>
-    <th>082<br/>ピングレタンクトップ<br/><span class="cardbase card-cl025"></span><br/><span class="barcode">*OH0PKR356UG*</span></th>
-    <th>083<br/>ちびフレスコパーカー<br/><span class="cardbase card-cb022"></span><br/><span class="barcode">*OHAR6L340SG*</span></th>
-    <th>084<br/>ハピネスQハート<br/><span class="cardbase card-sl021"></span><br/><span class="barcode">*OH0PRJ34E0G*</span></th>
-    <th>085<br/>サン×2アイランド<br/><span class="cardbase card-sl018"></span><br/><span class="barcode">*OHA2L.34E1G*</span></th>
-    <th>086<br/>リボンコンプレーノ<br/><span class="cardbase card-fl007"></span><br/><span class="barcode">*OH00UO33SWG*</span></th>
-    <th>087<br/>モンローストライプ<br/><span class="cardbase card-cl027"></span><br/><span class="barcode">*OH0P..3562G*</span></th>
-    <th>088<br/>ラフィーネアメジスト<br/><span class="cardbase card-fb008"></span><br/><span class="barcode">*OHAC-B33NDG*</span></th>
-    <th>089<br/>ブリッツダンサー<br/><span class="cardbase card-cb028"></span><br/><span class="barcode">*OHAE0X340PG*</span></th>
-    <th>090<br/>キラめきワンショルダー<br/><span class="cardbase card-cb026"></span><br/><span class="barcode">*OHAR5 340BG*</span></th>
-  </tr>
-  <tr>
-    <th>091<br/>クラシックバイオレット<br/><span class="cardbase card-sb023"></span><br/><span class="barcode">*OH0P8Q33KEG*</span></th>
-    <th>092<br/>サニースマイル<br/><span class="cardbase card-cl024"></span><br/><span class="barcode">*OHARHN3563G*</span></th>
-    <th>093<br/>あおぞラスタガール<br/><span class="cardbase card-cl030"></span><br/><span class="barcode">*OHAETM3561G*</span></th>
-    <th>094<br/>ロティオンブルー<br/><span class="cardbase card-sb020"></span><br/><span class="barcode">*OHARPK33KDG*</span></th>
-    <th>095<br/>ゴールデンフリージア<br/><span class="cardbase card-fl008"></span><br/><span class="barcode">*OHAC-B33SJG*</span></th>
-    <th>096<br/>グラマラスデニム<br/><span class="cardbase card-cb024"></span><br/><span class="barcode">*OHARHN3409G*</span></th>
-    <th>097<br/>キャンディテーラード<br/><span class="cardbase card-sl020"></span><br/><span class="barcode">*OHARPK34EJG*</span></th>
-    <th>098<br/>しとやかドレス<br/><span class="cardbase card-sb002"></span><br/><span class="barcode">*OHAP3E33KCG*</span></th>
-    <th>099<br/>ジューシーパラダイス<br/><span class="cardbase card-sb022"></span><br/><span class="barcode">*OHNA9PNGH8G*</span></th>
-    <th>100<br/>アクアクリスタル<br/><span class="cardbase card-cl026"></span><br/><span class="barcode">*OHNA3-NO9SG*</span></th>
-  </tr>
-  <tr>
-    <th>101<br/>おてんばタイユール<br/><span class="cardbase card-cl029"></span><br/><span class="barcode">*OHNDGINO9TG*</span></th>
-    <th>102<br/>トワイライトパピヨン<br/><span class="cardbase card-cl028"></span><br/><span class="barcode">*OHN0EJNO94G*</span></th>
-    <th>103<br/>ガーネットプリンセス<br/><span class="cardbase card-fl009"></span><br/><span class="barcode">*OHNL35NGPHG*</span></th>
-    <th>104<br/>レースアラモード<br/><span class="cardbase card-cl023"></span><br/><span class="barcode">*OHNQ7ONO9RG*</span></th>
-    <th>105<br/>ファンシーアリエス<br/><span class="cardbase card-sb019"></span><br/><span class="barcode">*OHNQCDNGH9G*</span></th>
-    <th>106<br/>ペッパーホットパンツ<br/><span class="cardbase card-cb029"></span><br/><span class="barcode">*OHNDGINH3NG*</span></th>
-    <th>107<br/>リカーモベスト<br/><span class="cardbase card-cb027"></span><br/><span class="barcode">*OHNDNENHGKG*</span></th>
-    <th>108<br/>スカーレットリリカ<br/><span class="cardbase card-sl017"></span><br/><span class="barcode">*OHN.Q9NHBTG*</span></th>
-    <th>109<br/>クローバーガーデン<br/><span class="cardbase card-fb009"></span><br/><span class="barcode">*OHNL35NFVBG*</span></th>
-    <th>110<br/>ジュディソワール<br/><span class="cardbase card-sb021"></span><br/><span class="barcode">*OHNQVWNGHBG*</span></th>
-  </tr>
-  <tr>
-    <th>111<br/>アルディツイスター<br/><span class="cardbase card-cb023"></span><br/><span class="barcode">*OHNQ7ONHGWG*</span></th>
-    <th>112<br/>シャカっとイーグルパンツ<br/><span class="cardbase card-cb030"></span><br/><span class="barcode">*OHN0WQNH3AG*</span></th>
-    <th>113<br/>パラソレッタワンピ<br/><span class="cardbase card-cb025"></span><br/><span class="barcode">*OHNQLANHG0G*</span></th>
-    <th>114<br/>さわやかペイサージュ<br/><span class="cardbase card-sl019"></span><br/><span class="barcode">*OHNQCDNHB3G*</span></th>
-    <th>115<br/>ジンジャーハーフ<br/><span class="cardbase card-cl038"></span><br/><span class="barcode">*OHPFYYQI18G*</span></th>
-    <th>116<br/>ペッピーギャング<br/><span class="cardbase card-cb035"></span><br/><span class="barcode">*OHCKWNQID%G*</span></th>
-    <th>117<br/>ピエニマレッサ<br/><span class="cardbase card-sb024"></span><br/><span class="barcode">*OHPYD9QWRTG*</span></th>
-    <th>118<br/>プラージュエスニック<br/><span class="cardbase card-sb025"></span><br/><span class="barcode">*OHCF05QWRGG*</span></th>
-    <th>119<br/>トマティーカウチン<br/><span class="cardbase card-cb033"></span><br/><span class="barcode">*OHCKELQIDXG*</span></th>
-    <th>120<br/>ふわ×2プリエール<br/><span class="cardbase card-cl033"></span><br/><span class="barcode">*OHCKELQI1SG*</span></th>
-  </tr>
-  <tr>
-    <th>121<br/>すずらんフォークテール<br/><span class="cardbase card-sl022"></span><br/><span class="barcode">*OHPY-HQWJFG*</span></th>
-    <th>122<br/>ロージーフレグランス<br/><span class="cardbase card-fl011"></span><br/><span class="barcode">*OHC-VYQVX9G*</span></th>
-    <th>123<br/>ポン×2らびセーター<br/><span class="cardbase card-cl034"></span><br/><span class="barcode">*OHPFVTQI1FG*</span></th>
-    <th>124<br/>ひなたっこワンピ<br/><span class="cardbase card-cl036"></span><br/><span class="barcode">*OHPF73QI1OG*</span></th>
-    <th>125<br/>ミモレスイフト<br/><span class="cardbase card-cb038"></span><br/><span class="barcode">*OHPFYYQID3G*</span></th>
-    <th>126<br/>リラアンベリール<br/><span class="cardbase card-fb010"></span><br/><span class="barcode">*OHP5TZQV5KG*</span></th>
-    <th>127<br/>ラブリープリマヴェール<br/><span class="cardbase card-sl024"></span><br/><span class="barcode">*OHPYD9QWJOG*</span></th>
-    <th>128<br/>トリッピーパイレーツ<br/><span class="cardbase card-cb036"></span><br/><span class="barcode">*OHPF73QI6NG*</span></th>
-    <th>129<br/>シエルパレード<br/><span class="cardbase card-fl012"></span><br/><span class="barcode">*OHP59UQVXOG*</span></th>
-    <th>130<br/>はんなりこまち<br/><span class="cardbase card-sl025"></span><br/><span class="barcode">*OHRHE3I-TXG*</span></th>
-  </tr>
-  <tr>
-    <th>131<br/>チョッキーミント<br/><span class="cardbase card-sb027"></span><br/><span class="barcode">*OHRH8YI-O5G*</span></th>
-    <th>132<br/>つなぎペインター<br/><span class="cardbase card-cl037"></span><br/><span class="barcode">*OHRJL-I.FXG*</span></th>
-    <th>133<br/>フォルシュトラッド<br/><span class="cardbase card-cb031"></span><br/><span class="barcode">*OHRHQFI.AUG*</span></th>
-    <th>134<br/>ファンシーダッフル<br/><span class="cardbase card-cl032"></span><br/><span class="barcode">*OH2HGQI.4CG*</span></th>
-    <th>135<br/>みずいろダウン<br/><span class="cardbase card-cb032"></span><br/><span class="barcode">*OH2HGQI.AHG*</span></th>
-    <th>136<br/>マスタードガール<br/><span class="cardbase card-cl031"></span><br/><span class="barcode">*OHRHQFI.4PG*</span></th>
-    <th>137<br/>パステルカルテット<br/><span class="cardbase card-sl023"></span><br/><span class="barcode">*OHRU3TI-TJG*</span></th>
-    <th>138<br/>プラッシュレディ<br/><span class="cardbase card-fb011"></span><br/><span class="barcode">*OHR9UKIE8DG*</span></th>
-    <th>139<br/>うき×2ひめりんご<br/><span class="cardbase card-sl026"></span><br/><span class="barcode">*OH2K6ZI-TKG*</span></th>
-    <th>140<br/>ホイップアームニット<br/><span class="cardbase card-cb034"></span><br/><span class="barcode">*OH2HURI.AVG*</span></th>
-  </tr>
-  <tr>
-    <th>141<br/>ボーイッシュアカデミー<br/><span class="cardbase card-cl039"></span><br/><span class="barcode">*OHR9PJI.F%G*</span></th>
-    <th>142<br/>オアシスフローリア<br/><span class="cardbase card-sb028"></span><br/><span class="barcode">*OH2KHUI-OSG*</span></th>
-    <th>143<br/>ティアードクロシェット<br/><span class="cardbase card-fl010"></span><br/><span class="barcode">*OH27WXIE3WG*</span></th>
-    <th>144<br/>ハンサムウエスタン<br/><span class="cardbase card-cb037"></span><br/><span class="barcode">*OHRJL-I.ARG*</span></th>
-    <th>145<br/>レーシーマスカット<br/><span class="cardbase card-cl035"></span><br/><span class="barcode">*OHRJXBI.FJG*</span></th>
-    <th>146<br/>リボンラッピングドレス<br/><span class="cardbase card-sb026"></span><br/><span class="barcode">*OH2K6ZI-OEG*</span></th>
-    <th>147<br/>ガーリッシュトレンチ<br/><span class="cardbase card-cb001"></span><br/><span class="barcode">*O2S6Q7A0EGG*</span></th>
-    <th>エレガントドレス<br/><span class="cardbase card-fb001"></span><br/><span class="barcode">*ONHCU5APFEA *</span></th>
-    <th>おじょうひんチェック<br/><span class="cardbase card-cb004"></span><br/><span class="barcode">*OUQV-9AU5JD*</span></th>
-    <th>ダボかわオーバーオール<br/><span class="cardbase card-cl006"></span><br/><span class="barcode">*ON2R2VAKUYA*</span></th>
-  </tr>
-</table>
-<table class="center">
-  <tr>
-    <th>パラダイスガール <br/><span class="cardbase card-cl001"></span><br/><span class="barcode">*ONHCU5AKU3A*</span></th>
-  </tr>
-</table>
-
-
-<br/><br/><h1><span style="color:red;display: table;margin: 0 auto;">F</span></h1>
-<table class="center">
-  <tr>
-    <th>001<br/>あつぞこピンクスニーカー<br/><span class="cardbase card-cs001"></span><br/><span class="barcode">*OUSGC3RO6KD*</span></th>
-    <th>002<br/>カラフルハートソックス<br/><span class="cardbase card-cs004"></span><br/><span class="barcode">*OUMQ9CD%A-D*</span></th>
-    <th>003<br/>みずいろハイカット<br/><span class="cardbase card-cs007"></span><br/><span class="barcode">*OUSHSW6P5XD*</span></th>
-    <th>004<br/>あみあげブーツ<br/><span class="cardbase card-ss001"></span><br/><span class="barcode">*OUSGKIRDH7D*</span></th>
-    <th>005<br/>レーシーヒール<br/><span class="cardbase card-fs003"></span><br/><span class="barcode">*OUSH5663UID*</span></th>
-    <th>006<br/>なでしこトングサンダル<br/><span class="cardbase card-ss006"></span><br/><span class="barcode">*OUMQHN6EGUD*</span></th>
-    <th>007<br/>ジュエリーサンダル<br/><span class="cardbase card-fs001"></span><br/><span class="barcode">*OUSGCT686OD*</span></th>
-    <th>008<br/>フラワーくしゅブーツ<br/><span class="cardbase card-cs002"></span><br/><span class="barcode">*OUMPDF65N5D*</span></th>
-    <th>009<br/>星つきＪ.Ｌｏ風ブーツ<br/><span class="cardbase card-cs003"></span><br/><span class="barcode">*OUSH5D6PT2D*</span></th>
-    <th>010<br/>ボン×２レッグウォーマー<br/><span class="cardbase card-ss002"></span><br/><span class="barcode">*OUMPDF6EG-D*</span></th>
-  </tr>
-  <tr>
-    <th>011<br/>クロスリボン<br/><span class="cardbase card-ss003"></span><br/><span class="barcode">*OUSG.F6JU1D*</span></th>
-    <th>012<br/>パステルラブスニーカー<br/><span class="cardbase card-cs005"></span><br/><span class="barcode">*OUSHGBROUND*</span></th>
-    <th>013<br/>ピンクリボンヒール<br/><span class="cardbase card-fs002"></span><br/><span class="barcode">*OUMP ER9H9D*</span></th>
-    <th>014<br/>ジャンピングエアバッシュ<br/><span class="cardbase card-cs008"></span><br/><span class="barcode">*OUMQJ2RTHID*</span></th>
-    <th>015<br/>グリーンティンカーヒール<br/><span class="cardbase card-ss005"></span><br/><span class="barcode">*OUSHGO6UOXD*</span></th>
-    <th>016<br/>レインボースニーカー<br/><span class="cardbase card-cs006"></span><br/><span class="barcode">*OUMQHA60O8D*</span></th>
-    <th>017<br/>フリ×２ローヒール<br/><span class="cardbase card-ss004"></span><br/><span class="barcode">*OUMQ9CDKT4D*</span></th>
-    <th>018<br/>ホワイトあつぞこサンダル<br/><span class="cardbase card-cs009"></span><br/><span class="barcode">*OUSHII60O9D*</span></th>
-    <th>019<br/>さわやかレモンスニーカー<br/><span class="cardbase card-cs010"></span><br/><span class="barcode">*OUMQZ465NDD*</span></th>
-    <th>020<br/>トリオリボンブーツ<br/><span class="cardbase card-ss008"></span><br/><span class="barcode">*OUMQUI6EG7D*</span></th>
-  </tr>
-  <tr>
-    <th>021<br/>コバルトカフスヒール<br/><span class="cardbase card-ss007"></span><br/><span class="barcode">*OUSHSW6PNWD*</span></th>
-    <th>022<br/>クールスターソックス<br/><span class="cardbase card-cs011"></span><br/><span class="barcode">*OUSO366PT0D*</span></th>
-    <th>023<br/>アラビアンミュール<br/><span class="cardbase card-ss010"></span><br/><span class="barcode">*OUUT FG8R1D*</span></th>
-    <th>024<br/>しま×2ハイヒール<br/><span class="cardbase card-cs015"></span><br/><span class="barcode">*OUVRI0GJEDD*</span></th>
-    <th>025<br/>シャイニープラネット<br/><span class="cardbase card-cs014"></span><br/><span class="barcode">*OUUFQKT7V6D*</span></th>
-    <th>026<br/>ジッパーパンプス<br/><span class="cardbase card-cs019"></span><br/><span class="barcode">*OUVNADTFQND*</span></th>
-    <th>027<br/>オリーブローファー<br/><span class="cardbase card-cs018"></span><br/><span class="barcode">*OUUG4RTKDPD*</span></th>
-    <th>028<br/>パッションピンクブーツ<br/><span class="cardbase card-ss009"></span><br/><span class="barcode">*OUVB.GGR94D*</span></th>
-    <th>029<br/>リボンあみあげヒール<br/><span class="cardbase card-fs005"></span><br/><span class="barcode">*OUVBMNTS3AD*</span></th>
-    <th>030<br/>スマートパンジー<br/><span class="cardbase card-cs012"></span><br/><span class="barcode">*OUUFN7G8WID*</span></th>
-  </tr>
-  <tr>
-    <th>031<br/>ミルキーアーガイル<br/><span class="cardbase card-cs016"></span><br/><span class="barcode">*OUUFJVT28QD*</span></th>
-    <th>032<br/>ディープミントブーツ<br/><span class="cardbase card-ss012"></span><br/><span class="barcode">*OUUFHOTXWXD*</span></th>
-    <th>033<br/>クイーンローズ<br/><span class="cardbase card-fs004"></span><br/><span class="barcode">*OUUTF8TC8HD*</span></th>
-    <th>034<br/>ヒーロースニーカーブーツ<br/><span class="cardbase card-cs013"></span><br/><span class="barcode">*OUVRQ9TKDFD*</span></th>
-    <th>035<br/>エレカジローファー<br/><span class="cardbase card-cs017"></span><br/><span class="barcode">*OUVRYIG39ND*</span></th>
-    <th>036<br/>ビビッドコルクソール<br/><span class="cardbase card-ss011"></span><br/><span class="barcode">*OUVR5ET72-D*</span></th>
-    <th>037<br/>ベルクロラディッシュ<br/><span class="cardbase card-cs021"></span><br/><span class="barcode">*OH0PR-9JDQG*</span></th>
-    <th>038<br/>スカッシュヒールスニーカー<br/><span class="cardbase card-cs022"></span><br/><span class="barcode">*OHAR6K9JDDG*</span></th>
-    <th>039<br/>スキップリボンパンプス<br/><span class="cardbase card-cs026"></span><br/><span class="barcode">*OHARYN9JQ%G*</span></th>
-    <th>040<br/>フレッシュマンゴスチン<br/><span class="cardbase card-ss015"></span><br/><span class="barcode">*OH0NJI9IWTG*</span></th>
-  </tr>
-  <tr>
-    <th>041<br/>エーデルヴィオレッタ<br/><span class="cardbase card-fs006"></span><br/><span class="barcode">*OHACWI9IRPG*</span></th>
-    <th>042<br/>スターダストハイヒール<br/><span class="cardbase card-cs023"></span><br/><span class="barcode">*OH0P8J9JD6G*</span></th>
-    <th>043<br/>ラティオウエスタン<br/><span class="cardbase card-cs029"></span><br/><span class="barcode">*OH0CC.9JD9G*</span></th>
-    <th>044<br/>でこリボンヒール<br/><span class="cardbase card-ss013"></span><br/><span class="barcode">*OH0N4E9IWFG*</span></th>
-    <th>045<br/>とんがりオレンジピール<br/><span class="cardbase card-cs024"></span><br/><span class="barcode">*OHARHL9JQXG*</span></th>
-    <th>046<br/>リゾートクロスアップ<br/><span class="cardbase card-ss016"></span><br/><span class="barcode">*OHA2XQ9IWGG*</span></th>
-    <th>047<br/>ピーチデコレヒール<br/><span class="cardbase card-fs007"></span><br/><span class="barcode">*OHNLSUG.ONG*</span></th>
-    <th>048<br/>スイートマカロン<br/><span class="cardbase card-ss017"></span><br/><span class="barcode">*OHN.QHG.TEG*</span></th>
-    <th>049<br/>ピスタッチブーツ<br/><span class="cardbase card-cs028"></span><br/><span class="barcode">*OHN0E-G NWG*</span></th>
-    <th>050<br/>カモミールサンダル<br/><span class="cardbase card-ss019"></span><br/><span class="barcode">*OHNQ29G.TSG*</span></th>
-  </tr>
-  <tr>
-    <th>051<br/>カルカーニョメッシュ<br/><span class="cardbase card-ss018"></span><br/><span class="barcode">*OHNANAG.T5G*</span></th>
-    <th>052<br/>オレンジメッシュスニーカー<br/><span class="cardbase card-cs027"></span><br/><span class="barcode">*OHNDPAG N1G*</span></th>
-    <th>053<br/>にじいろヒール<br/><span class="cardbase card-cs025"></span><br/><span class="barcode">*OHNQLOG NVG*</span></th>
-    <th>054<br/>リトルハートヒール<br/><span class="cardbase card-ss014"></span><br/><span class="barcode">*OH03HWG.TDG*</span></th>
-    <th>055<br/>パーリッシュヒール<br/><span class="cardbase card-fs008"></span><br/><span class="barcode">*OH0D.HG.OAG*</span></th>
-    <th>056<br/>ひだまりソックス<br/><span class="cardbase card-cs020"></span><br/><span class="barcode">*OHNATEG AAG*</span></th>
-    <th>057<br/>メディオアーミーブーツ<br/><span class="cardbase card-cs030"></span><br/><span class="barcode">*OHPLXWUTVHG*</span></th>
-    <th>058<br/>ラセットリーフブーツ<br/><span class="cardbase card-ss020"></span><br/><span class="barcode">*OHPYWCUTQQG*</span></th>
-    <th>059<br/>サウスアイランド<br/><span class="cardbase card-ss024"></span><br/><span class="barcode">*OHPYDHUT7KG*</span></th>
-    <th>060<br/>リンクルフローレット<br/><span class="cardbase card-cs036"></span><br/><span class="barcode">*OHPF7TUTVJG*</span></th>
-  </tr>
-  <tr>
-    <th>061<br/>チッパーラバーソール<br/><span class="cardbase card-cs033"></span><br/><span class="barcode">*OHCKEKUTVIG*</span></th>
-    <th>062<br/>スーオパッショーネ<br/><span class="cardbase card-ss025"></span><br/><span class="barcode">*OHCF0GUT7%G*</span></th>
-    <th>063<br/>ハートブランシェ<br/><span class="cardbase card-fs009"></span><br/><span class="barcode">*OHC-2TUN1EG*</span></th>
-    <th>064<br/>トゥインクルウォーマー<br/><span class="cardbase card-ss022"></span><br/><span class="barcode">*OHPY-VUTQ6G*</span></th>
-    <th>065<br/>ハートジップアップ<br/><span class="cardbase card-cs039"></span><br/><span class="barcode">*OHCKQ UTVFG*</span></th>
-    <th>066<br/>ブラウンカウスニーカー<br/><span class="cardbase card-cs031"></span><br/><span class="barcode">*OHCFSVUTV2G*</span></th>
-    <th>067<br/>ハッピーボーダーソックス<br/><span class="cardbase card-cs034"></span><br/><span class="barcode">*OH2HUQYUSGG*</span></th>
-    <th>068<br/>クレアオープンヒール<br/><span class="cardbase card-cs037"></span><br/><span class="barcode">*OHRJ.BYUSCG*</span></th>
-    <th>069<br/>シルキースノー<br/><span class="cardbase card-ss023"></span><br/><span class="barcode">*OHRU3MYS%2G*</span></th>
-    <th>070<br/>フルールオランジェ<br/><span class="cardbase card-fs011"></span><br/><span class="barcode">*OHR9U.YS47G*</span></th>
-  </tr>
-</table>
-<table class="center">
-  <tr>
-    <th>071<br/>マリンプロムナード<br/><span class="cardbase card-ss026"></span><br/><span class="barcode">*OH2KV4YS%1G*</span></th>
-    <th>072<br/>ブラックピッカンシューズ<br/><span class="cardbase card-cs032"></span><br/><span class="barcode">*OH2HGJYUS4G*</span></th>
-    <th>073<br/>ルミナスタッズブーツ<br/><span class="cardbase card-cs038"></span><br/><span class="barcode">*OH27A.YUS7G*</span></th>
-    <th>074<br/>スイートロリポップ<br/><span class="cardbase card-ss021"></span><br/><span class="barcode">*OHRUSXYUNOG*</span></th>
-    <th>075<br/>ビューティフルセレブ<br/><span class="cardbase card-fs010"></span><br/><span class="barcode">*OH27W YS4CG*</span></th>
-    <th>076<br/>シャルムブーツウォーマー<br/><span class="cardbase card-cs035"></span><br/><span class="barcode">*OHRJXPYUS3G*</span></th>
-  </tr>
-</table>
-</div>
-<br/><p style="text-align:center">Barcode data from <a href="https://nao-yoshi.seesaa.net/article/481153607.html">here</a>.</p>
-
-<div id="snackbar">Copied to clipboard</div>
-<script>
-//toast based on https://www.w3schools.com/howto/howto_js_snackbar.asp
-  let div = document.getElementById('cards');
-
-  div.onclick = function(event) {
-    let target = event.target;
-
-    while (target != this) {
-      if (target.tagName == 'SPAN') {
-        if (target.classList.contains("barcode")) {
-          copytext(target);
-          return;
-        }
+    container.addEventListener('click', (event) => {
+      const target = event.target;
+      if (target.classList.contains('barcode')) {
+        copyText(target);
       }
-      target = target.parentNode;
-    }
-  }
+    });
 
-  function copytext(node) {
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(node.innerText);
-    } else {
-        document.execCommand("copy");
+    function copyText(node) {
+      navigator.clipboard.writeText(node.textContent)
+        .then(() => showToast())
+        .catch(err => console.error('Failed to copy: ', err));
     }
-    showtoast();
-  }
-  
-  //https://stackoverflow.com/a/45036752
-  function reset_animation() {
-    var el = document.getElementById('snackbar');
-    el.style.animation = 'none';
-    el.offsetHeight; /* trigger reflow */
-    el.style.animation = null; 
-  }
 
-  let timeoutID = undefined;
-  function showtoast() {
-    var x = document.getElementById("snackbar");
-    if (typeof timeoutID == "number") {
-      clearTimeout(timeoutID)
-      reset_animation();
+    function resetAnimation() {
+      const el = document.getElementById('snackbar');
+      el.style.animation = 'none';
+      el.offsetHeight; /* trigger reflow */
+      el.style.animation = null;
     }
-    x.className = "show";
-    timeoutID = setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1800);
-  }
-</script>
 
+    let timeoutID;
+    function showToast() {
+      const snackbar = document.getElementById('snackbar');
+      if (timeoutID) {
+        clearTimeout(timeoutID);
+        resetAnimation();
+      }
+      snackbar.className = 'show';
+      timeoutID = setTimeout(() => {
+        snackbar.className = '';
+      }, 1800);
+    }
+  </script>
 </body>
 </html>
