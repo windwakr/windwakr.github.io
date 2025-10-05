@@ -42,11 +42,7 @@
       background: #eee;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
+      perspective: 1000px;
     }
 
     .card-title {
@@ -55,11 +51,34 @@
       margin-bottom: 0.5rem;
     }
 
-    .cardbase {
+    .card-flipper {
+      position: relative;
       width: 180px;
       height: 256px;
-      background: url("WantameCards2x.png") no-repeat;
       margin: 0.5rem 0;
+      transition: transform 0.6s ease-in-out;
+      transform-style: preserve-3d;
+    }
+
+    .card:hover .card-flipper {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 8px;
+    }
+
+    .card-front {
+      background: url("WantameCards2x.png") no-repeat;
+    }
+
+    .card-back {
+      background: url("WantameCardBacks2x.png") no-repeat;
+      transform: rotateY(180deg);
     }
 
     .section-title {
@@ -287,6 +306,55 @@
     .card-MP-003 { background-position: -2520px -2560px; }
     .card-MP-004 { background-position: -2700px -2560px; }
     .card-MP-005 { background-position: -2880px -2560px; }
+    
+    .cardback-01 { background-position: -0px -0px; }
+    .cardback-02 { background-position: -180px -0px; }
+    .cardback-03 { background-position: -360px -0px; }
+    .cardback-04 { background-position: -540px -0px; }
+    .cardback-05 { background-position: -720px -0px; }
+    .cardback-06 { background-position: -900px -0px; }
+    .cardback-07 { background-position: -1080px -0px; }
+    .cardback-08 { background-position: -1260px -0px; }
+    .cardback-09 { background-position: -1440px -0px; }
+    .cardback-10 { background-position: -1620px -0px; }
+    .cardback-11 { background-position: -0px -256px; }
+    .cardback-12 { background-position: -180px -256px; }
+    .cardback-13 { background-position: -360px -256px; }
+    .cardback-14 { background-position: -540px -256px; }
+    .cardback-15 { background-position: -720px -256px; }
+    .cardback-16 { background-position: -900px -256px; }
+    .cardback-17 { background-position: -1080px -256px; }
+    .cardback-18 { background-position: -1260px -256px; }
+    .cardback-19 { background-position: -1440px -256px; }
+    .cardback-20 { background-position: -1620px -256px; }
+    .cardback-21 { background-position: -0px -512px; }
+    .cardback-22 { background-position: -180px -512px; }
+    .cardback-23 { background-position: -360px -512px; }
+    .cardback-24 { background-position: -540px -512px; }
+    .cardback-25 { background-position: -720px -512px; }
+    .cardback-26 { background-position: -900px -512px; }
+    .cardback-27 { background-position: -1080px -512px; }
+    .cardback-28 { background-position: -1260px -512px; }
+    .cardback-29 { background-position: -1440px -512px; }
+    .cardback-30 { background-position: -1620px -512px; }
+    .cardback-31 { background-position: -0px -768px; }
+    .cardback-32 { background-position: -180px -768px; }
+    .cardback-33 { background-position: -360px -768px; }
+    .cardback-34 { background-position: -540px -768px; }
+    .cardback-35 { background-position: -720px -768px; }
+    .cardback-36 { background-position: -900px -768px; }
+    .cardback-37 { background-position: -1080px -768px; }
+    .cardback-38 { background-position: -1260px -768px; }
+    .cardback-39 { background-position: -1440px -768px; }
+    .cardback-40 { background-position: -1620px -768px; }
+    .cardback-41 { background-position: -0px -1024px; }
+    .cardback-42 { background-position: -180px -1024px; }
+    .cardback-43 { background-position: -360px -1024px; }
+    .cardback-44 { background-position: -540px -1024px; }
+    .cardback-45 { background-position: -720px -1024px; }
+    .cardback-46 { background-position: -900px -1024px; }
+    .cardback-47 { background-position: -1080px -1024px; }
+    .cardback-48 { background-position: -1260px -1024px; }
   </style>
 </head>
 <body>
@@ -301,75 +369,129 @@
       <div class="card-grid">
         <div class="card">
           <div class="card-title">[PU-001]<br>ミニチュア・ダックスフンド</div>
-          <span class="cardbase card-PU-001"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-001"></div>
+            <div class="card-back cardback-02"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-002]<br>チワワ</div>
-          <span class="cardbase card-PU-002"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-002"></div>
+            <div class="card-back cardback-01"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-003]<br>フレンチ・ブルドッグ</div>
-          <span class="cardbase card-PU-003"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-003"></div>
+            <div class="card-back cardback-11"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-004]<br>しばいぬ</div>
-          <span class="cardbase card-PU-004"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-004"></div>
+            <div class="card-back cardback-06"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-005]<br>アメリカン・コッカー・スパニエル</div>
-          <span class="cardbase card-PU-005"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-005"></div>
+            <div class="card-back cardback-09"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-006]<br>シベリアン・ハスキー</div>
-          <span class="cardbase card-PU-006"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-006"></div>
+            <div class="card-back cardback-08"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-007]<br>トイ・プードル</div>
-          <span class="cardbase card-PU-007"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-007"></div>
+            <div class="card-back cardback-07"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-008]<br>パグ</div>
-          <span class="cardbase card-PU-008"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-008"></div>
+            <div class="card-back cardback-10"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-009]<br>ワイアー・フォックス・テリア</div>
-          <span class="cardbase card-PU-009"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-009"></div>
+            <div class="card-back cardback-12"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-010]<br>ボーダー・コリー</div>
-          <span class="cardbase card-PU-010"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-010"></div>
+            <div class="card-back cardback-14"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-011]<br>ヨークシャー・テリア</div>
-          <span class="cardbase card-PU-011"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-011"></div>
+            <div class="card-back cardback-05"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-012]<br>ビーグル</div>
-          <span class="cardbase card-PU-012"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-012"></div>
+            <div class="card-back cardback-18"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-013]<br>ラブラドール・レトリバー</div>
-          <span class="cardbase card-PU-013"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-013"></div>
+            <div class="card-back cardback-04"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-014]<br>シー・ズー</div>
-          <span class="cardbase card-PU-014"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-014"></div>
+            <div class="card-back cardback-17"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-015]<br>ウェルッシュ・コーギー・ペンブローク</div>
-          <span class="cardbase card-PU-015"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-015"></div>
+            <div class="card-back cardback-03"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-016]<br>にほんスピッツ</div>
-          <span class="cardbase card-PU-016"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-016"></div>
+            <div class="card-back cardback-13"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-019]<br>しばいぬ（くろ）</div>
-          <span class="cardbase card-PU-019"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-019"></div>
+            <div class="card-back cardback-16"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[PU-020]<br>ミニチュア・ダックスフンド（しろ）</div>
-          <span class="cardbase card-PU-020"></span>
+          <div class="card-flipper">
+            <div class="card-front card-PU-020"></div>
+            <div class="card-back cardback-15"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -379,23 +501,38 @@
       <div class="card-grid">
         <div class="card">
           <div class="card-title">[MP-001]<br>ゆらりんシャボン玉</div>
-          <span class="cardbase card-MP-001"></span>
+          <div class="card-flipper">
+            <div class="card-front card-MP-001"></div>
+            <div class="card-back cardback-48"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[MP-002]<br>キラキラスター</div>
-          <span class="cardbase card-MP-002"></span>
+          <div class="card-flipper">
+            <div class="card-front card-MP-002"></div>
+            <div class="card-back cardback-48"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[MP-003]<br>ラブリーハート</div>
-          <span class="cardbase card-MP-003"></span>
+          <div class="card-flipper">
+            <div class="card-front card-MP-003"></div>
+            <div class="card-back cardback-48"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[MP-004]<br>スプラッシュレインボー</div>
-          <span class="cardbase card-MP-004"></span>
+          <div class="card-flipper">
+            <div class="card-front card-MP-004"></div>
+            <div class="card-back cardback-48"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[MP-005]<br>キューティーフラワー</div>
-          <span class="cardbase card-MP-005"></span>
+          <div class="card-flipper">
+            <div class="card-front card-MP-005"></div>
+            <div class="card-back cardback-48"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -405,551 +542,962 @@
       <div class="card-grid">
         <div class="card">
           <div class="card-title">[W-001]<br>スポカジロングT</div>
-          <span class="cardbase card-W-001"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-001"></div>
+            <div class="card-back cardback-19"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-002]<br>めちゃ■モテフリルカーデ×キャミ</div>
-          <span class="cardbase card-W-002"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-002"></div>
+            <div class="card-back cardback-19"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-003]<br>フレカジ・デイスタイル</div>
-          <span class="cardbase card-W-003"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-003"></div>
+            <div class="card-back cardback-19"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-004]<br>ふわふわファーコート</div>
-          <span class="cardbase card-W-004"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-004"></div>
+            <div class="card-back cardback-19"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-005]<br>カッパきぐるみぃ</div>
-          <span class="cardbase card-W-005"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-005"></div>
+            <div class="card-back cardback-19"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-006]<br>キャンディポップチアガール</div>
-          <span class="cardbase card-W-006"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-006"></div>
+            <div class="card-back cardback-24"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-007]<br>スカルパープルT</div>
-          <span class="cardbase card-W-007"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-007"></div>
+            <div class="card-back cardback-24"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-008]<br>おやすみギンガムチェック</div>
-          <span class="cardbase card-W-008"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-008"></div>
+            <div class="card-back cardback-24"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-009]<br>スノーホワイトプリンセス</div>
-          <span class="cardbase card-W-009"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-009"></div>
+            <div class="card-back cardback-24"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-010]<br>きらりんスパンコール</div>
-          <span class="cardbase card-W-010"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-010"></div>
+            <div class="card-back cardback-24"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-011]<br>スイートストロベリーエプロン</div>
-          <span class="cardbase card-W-011"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-011"></div>
+            <div class="card-back cardback-28"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-012]<br>こあくまファーボレロ</div>
-          <span class="cardbase card-W-012"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-012"></div>
+            <div class="card-back cardback-28"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-013]<br>トロピカルラグランT</div>
-          <span class="cardbase card-W-013"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-013"></div>
+            <div class="card-back cardback-28"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-014]<br>フリフリプリティガール</div>
-          <span class="cardbase card-W-014"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-014"></div>
+            <div class="card-back cardback-28"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-015]<br>さわやかレプリカユニ</div>
-          <span class="cardbase card-W-015"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-015"></div>
+            <div class="card-back cardback-33"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-016]<br>あったかカウチン</div>
-          <span class="cardbase card-W-016"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-016"></div>
+            <div class="card-back cardback-33"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-017]<br>らくちんサロペットデニム</div>
-          <span class="cardbase card-W-017"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-017"></div>
+            <div class="card-back cardback-33"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-018]<br>おてんばカウガール</div>
-          <span class="cardbase card-W-018"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-018"></div>
+            <div class="card-back cardback-33"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-019]<br>スマートピンクレザー</div>
-          <span class="cardbase card-W-019"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-019"></div>
+            <div class="card-back cardback-25"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-020]<br>カモフラ×カーゴ</div>
-          <span class="cardbase card-W-020"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-020"></div>
+            <div class="card-back cardback-25"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-021]<br>タータン＆チョコブレザー</div>
-          <span class="cardbase card-W-021"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-021"></div>
+            <div class="card-back cardback-25"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-022]<br>スポカジフードパーカ</div>
-          <span class="cardbase card-W-022"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-022"></div>
+            <div class="card-back cardback-25"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-023]<br>サンバ・デ・サンシャイン</div>
-          <span class="cardbase card-W-023"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-023"></div>
+            <div class="card-back cardback-25"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-024]<br>クリムゾンヴィーナス</div>
-          <span class="cardbase card-W-024"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-024"></div>
+            <div class="card-back cardback-26"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-025]<br>ワン■タジスタ</div>
-          <span class="cardbase card-W-025"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-025"></div>
+            <div class="card-back cardback-26"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-026]<br>しましまグリーンパジャマ</div>
-          <span class="cardbase card-W-026"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-026"></div>
+            <div class="card-back cardback-26"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-027]<br>パールピンク・ドルシネア</div>
-          <span class="cardbase card-W-027"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-027"></div>
+            <div class="card-back cardback-26"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-028]<br>ざっくりボーダーニット</div>
-          <span class="cardbase card-W-028"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-028"></div>
+            <div class="card-back cardback-30"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-029]<br>ゆるかわベロアジャージ</div>
-          <span class="cardbase card-W-029"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-029"></div>
+            <div class="card-back cardback-30"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-030]<br>トロピカルロゴパーカ</div>
-          <span class="cardbase card-W-030"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-030"></div>
+            <div class="card-back cardback-30"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-031]<br>アメカジ・ヴィンテージ</div>
-          <span class="cardbase card-W-031"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-031"></div>
+            <div class="card-back cardback-30"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-032]<br>キャラメル×ミリタリーMIX</div>
-          <span class="cardbase card-W-032"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-032"></div>
+            <div class="card-back cardback-35"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-033]<br>フローラルイエロードレス</div>
-          <span class="cardbase card-W-033"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-033"></div>
+            <div class="card-back cardback-35"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-034]<br>パンダきぐるみぃ</div>
-          <span class="cardbase card-W-034"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-034"></div>
+            <div class="card-back cardback-35"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-035]<br>おすましレッドPコート</div>
-          <span class="cardbase card-W-035"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-035"></div>
+            <div class="card-back cardback-35"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-036]<br>サンバ・デ・ブルースカイ</div>
-          <span class="cardbase card-W-036"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-036"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-037]<br>サイケデリックパンタロン</div>
-          <span class="cardbase card-W-037"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-037"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-038]<br>スカルグリーンパーカ</div>
-          <span class="cardbase card-W-038"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-038"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-039]<br>ゴスロリ・クラシック</div>
-          <span class="cardbase card-W-039"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-039"></div>
+            <div class="card-back cardback-27"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-040]<br>ドリーミー・クレッセント</div>
-          <span class="cardbase card-W-040"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-040"></div>
+            <div class="card-back cardback-27"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-041]<br>ハッピースマイルチアガール</div>
-          <span class="cardbase card-W-041"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-041"></div>
+            <div class="card-back cardback-27"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-042]<br>おでかけノルディックセーター</div>
-          <span class="cardbase card-W-042"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-042"></div>
+            <div class="card-back cardback-27"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-043]<br>だんだんティアードワンピ</div>
-          <span class="cardbase card-W-043"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-043"></div>
+            <div class="card-back cardback-32"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-044]<br>ミルキーメイドエプロン</div>
-          <span class="cardbase card-W-044"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-044"></div>
+            <div class="card-back cardback-32"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-045]<br>にじいろマーメイド</div>
-          <span class="cardbase card-W-045"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-045"></div>
+            <div class="card-back cardback-32"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-046]<br>パンクロック・ディーバ</div>
-          <span class="cardbase card-W-046"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-046"></div>
+            <div class="card-back cardback-32"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-047]<br>マニッシュ・シュガーホワイト</div>
-          <span class="cardbase card-W-047"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-047"></div>
+            <div class="card-back cardback-23"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-048]<br>パステルスクールニット</div>
-          <span class="cardbase card-W-048"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-048"></div>
+            <div class="card-back cardback-23"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-049]<br>フェミニンホットピンクT</div>
-          <span class="cardbase card-W-049"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-049"></div>
+            <div class="card-back cardback-23"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-050]<br>トゥインクル・スター</div>
-          <span class="cardbase card-W-050"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-050"></div>
+            <div class="card-back cardback-27"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-051]<br>ブギウギドットワンピ</div>
-          <span class="cardbase card-W-051"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-051"></div>
+            <div class="card-back cardback-23"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-052]<br>パイナップル・エンジェル</div>
-          <span class="cardbase card-W-052"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-052"></div>
+            <div class="card-back cardback-23"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-053]<br>キューティー・ドラゴン</div>
-          <span class="cardbase card-W-053"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-053"></div>
+            <div class="card-back cardback-34"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-054]<br>バスケタンク×アーミー</div>
-          <span class="cardbase card-W-054"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-054"></div>
+            <div class="card-back cardback-34"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-055]<br>とこなつハイビスカスビキニ</div>
-          <span class="cardbase card-W-055"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-055"></div>
+            <div class="card-back cardback-34"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-056]<br>ピュアホワイト・コッペリア</div>
-          <span class="cardbase card-W-056"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-056"></div>
+            <div class="card-back cardback-34"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-057]<br>フォトジェニック★アイドル</div>
-          <span class="cardbase card-W-057"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-057"></div>
+            <div class="card-back cardback-37"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-058]<br>ハッピー・スノーマン</div>
-          <span class="cardbase card-W-058"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-058"></div>
+            <div class="card-back cardback-37"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-059]<br>デコレートスイーツドレス</div>
-          <span class="cardbase card-W-059"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-059"></div>
+            <div class="card-back cardback-37"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-060]<br>ウエスタン・ファーベスト</div>
-          <span class="cardbase card-W-060"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-060"></div>
+            <div class="card-back cardback-38"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-061]<br>レインボーダッフルコート</div>
-          <span class="cardbase card-W-061"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-061"></div>
+            <div class="card-back cardback-38"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-062]<br>グリッターフィッシュドレス</div>
-          <span class="cardbase card-W-062"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-062"></div>
+            <div class="card-back cardback-38"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-063]<br>ペンギンきぐるみぃ</div>
-          <span class="cardbase card-W-063"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-063"></div>
+            <div class="card-back cardback-41"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-064]<br>ブリリアント・スターライト</div>
-          <span class="cardbase card-W-064"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-064"></div>
+            <div class="card-back cardback-41"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-065]<br>ラブリー・シュプール</div>
-          <span class="cardbase card-W-065"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-065"></div>
+            <div class="card-back cardback-41"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-066]<br>ウエスタン・チェックネル</div>
-          <span class="cardbase card-W-066"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-066"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-067]<br>パンキッシュ・チェリー</div>
-          <span class="cardbase card-W-067"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-067"></div>
+            <div class="card-back cardback-36"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-068]<br>いなずまスパイシーガール</div>
-          <span class="cardbase card-W-068"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-068"></div>
+            <div class="card-back cardback-36"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-069]<br>マッシュルームワンピ</div>
-          <span class="cardbase card-W-069"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-069"></div>
+            <div class="card-back cardback-39"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-070]<br>パステル・ラッピンドレス</div>
-          <span class="cardbase card-W-070"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-070"></div>
+            <div class="card-back cardback-39"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-071]<br>ラッキースターチアガール</div>
-          <span class="cardbase card-W-071"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-071"></div>
+            <div class="card-back cardback-40"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-072]<br>スペース・ウォーカー</div>
-          <span class="cardbase card-W-072"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-072"></div>
+            <div class="card-back cardback-40"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-073]<br>ストロベリー・パンクロリータ</div>
-          <span class="cardbase card-W-073"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-073"></div>
+            <div class="card-back cardback-40"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-074]<br>フェミニンビーズカーデ</div>
-          <span class="cardbase card-W-074"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-074"></div>
+            <div class="card-back cardback-42"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-075]<br>はなさきコート</div>
-          <span class="cardbase card-W-075"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-075"></div>
+            <div class="card-back cardback-42"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-076]<br>インペリアルゴールドドレス</div>
-          <span class="cardbase card-W-076"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-076"></div>
+            <div class="card-back cardback-42"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-077]<br>サニーオレンジフリル</div>
-          <span class="cardbase card-W-077"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-077"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-078]<br>カラフルポップチアガール</div>
-          <span class="cardbase card-W-078"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-078"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-079]<br>フォトジェニック■アイドル</div>
-          <span class="cardbase card-W-079"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-079"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-080]<br>GOGO!げんきガール</div>
-          <span class="cardbase card-W-080"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-080"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-081]<br>スワロウテイル・チュニック</div>
-          <span class="cardbase card-W-081"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-081"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-082]<br>はりきりキュイジニエール</div>
-          <span class="cardbase card-W-082"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-082"></div>
+            <div class="card-back cardback-44"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-083]<br>スターフィッシュ・スプラッシュ</div>
-          <span class="cardbase card-W-083"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-083"></div>
+            <div class="card-back cardback-44"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-084]<br>ハイビスカスムームー</div>
-          <span class="cardbase card-W-084"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-084"></div>
+            <div class="card-back cardback-44"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-085]<br>プリティピンクセーラー</div>
-          <span class="cardbase card-W-085"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-085"></div>
+            <div class="card-back cardback-44"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-086]<br>ミディアムブルー・フロリナ</div>
-          <span class="cardbase card-W-086"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-086"></div>
+            <div class="card-back cardback-44"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-087]<br>コケティッシュデビルガール</div>
-          <span class="cardbase card-W-087"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-087"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-088]<br>メタリック・コスモコール</div>
-          <span class="cardbase card-W-088"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-088"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-089]<br>キューティー・コンチェルト</div>
-          <span class="cardbase card-W-089"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-089"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-090]<br>ローズコサージュドレス</div>
-          <span class="cardbase card-W-090"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-090"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-091]<br>ひつじきぐるみぃ</div>
-          <span class="cardbase card-W-091"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-091"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-092]<br>サイクルヒット</div>
-          <span class="cardbase card-W-092"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-092"></div>
+            <div class="card-back cardback-23"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-093]<br>ケロケロスカイブルーT</div>
-          <span class="cardbase card-W-093"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-093"></div>
+            <div class="card-back cardback-23"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-094]<br>ゆらゆら金ぎょT</div>
-          <span class="cardbase card-W-094"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-094"></div>
+            <div class="card-back cardback-23"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-095]<br>ロッキン♪ワイルドT</div>
-          <span class="cardbase card-W-095"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-095"></div>
+            <div class="card-back cardback-27"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-096]<br>ワンコなでしこ</div>
-          <span class="cardbase card-W-096"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-096"></div>
+            <div class="card-back cardback-19"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-097]<br>フラワーガーデンプリンセス</div>
-          <span class="cardbase card-W-097"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-097"></div>
+            <div class="card-back cardback-27"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-098]<br>きょうりゅうきぐるみぃ</div>
-          <span class="cardbase card-W-098"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-098"></div>
+            <div class="card-back cardback-26"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-099]<br>てるてるレインコート</div>
-          <span class="cardbase card-W-099"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-099"></div>
+            <div class="card-back cardback-30"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-100]<br>パピーこまち</div>
-          <span class="cardbase card-W-100"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-100"></div>
+            <div class="card-back cardback-19"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-101]<br>ミッドナイト・ファンタジー</div>
-          <span class="cardbase card-W-101"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-101"></div>
+            <div class="card-back cardback-30"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-102]<br>ロッキン♪カモフラベスト</div>
-          <span class="cardbase card-W-102"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-102"></div>
+            <div class="card-back cardback-32"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-103]<br>じょうねつアンダルシア</div>
-          <span class="cardbase card-W-103"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-103"></div>
+            <div class="card-back cardback-33"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-104]<br>しおかぜマリンガール</div>
-          <span class="cardbase card-W-104"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-104"></div>
+            <div class="card-back cardback-35"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-105]<br>ふわりんカシュクール</div>
-          <span class="cardbase card-W-105"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-105"></div>
+            <div class="card-back cardback-38"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S01]<br>パステルブルー・アンサンブル</div>
-          <span class="cardbase card-W-S01"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S01"></div>
+            <div class="card-back cardback-22"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S02]<br>めちゃ■かわフリルカーデ×キャミ</div>
-          <span class="cardbase card-W-S02"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S02"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S03]<br>ごきげんサロペットデニム</div>
-          <span class="cardbase card-W-S03"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S03"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S04]<br>スマートイエローレザー</div>
-          <span class="cardbase card-W-S04"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S04"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S05]<br>ハット■トリック</div>
-          <span class="cardbase card-W-S05"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S05"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S06]<br>しましまレッドパジャマ</div>
-          <span class="cardbase card-W-S06"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S06"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S07]<br>フローラルバイオレットドレス</div>
-          <span class="cardbase card-W-S07"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S07"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S08]<br>ゆきんこノルディックセーター</div>
-          <span class="cardbase card-W-S08"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S08"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S09]<br>ワンタメ・CMクイーン</div>
-          <span class="cardbase card-W-S09"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S09"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S10]<br>ワンタメ・CMグランドクイーン</div>
-          <span class="cardbase card-W-S10"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S10"></div>
+            <div class="card-back cardback-21"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S11]<br>おすましブルーPコート</div>
-          <span class="cardbase card-W-S11"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S11"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S12]<br>タータン＆グレーブレザー</div>
-          <span class="cardbase card-W-S12"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S12"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S13]<br>グリッターフィッシュドレス（パープル）</div>
-          <span class="cardbase card-W-S13"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S13"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S14]<br>レインボーダッフルコート（イエロー）</div>
-          <span class="cardbase card-W-S14"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S14"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S15]<br>ハッピー・スノーマン（バイオレット）</div>
-          <span class="cardbase card-W-S15"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S15"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S16]<br>バレンタインスイーツドレス</div>
-          <span class="cardbase card-W-S16"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S16"></div>
+            <div class="card-back cardback-36"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S17]<br>エレガント・ラッピンドレス</div>
-          <span class="cardbase card-W-S17"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S17"></div>
+            <div class="card-back cardback-36"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S18]<br>ブライトスターチアガール</div>
-          <span class="cardbase card-W-S18"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S18"></div>
+            <div class="card-back cardback-36"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S19]<br>レモン・パンクロリータ</div>
-          <span class="cardbase card-W-S19"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S19"></div>
+            <div class="card-back cardback-39"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S20]<br>はなさきコート（オレンジ）</div>
-          <span class="cardbase card-W-S20"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S20"></div>
+            <div class="card-back cardback-39"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S21]<br>サニーチェリーフリル</div>
-          <span class="cardbase card-W-S21"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S21"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S22]<br>はりきりキュイジニエール（イエロー）</div>
-          <span class="cardbase card-W-S22"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S22"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S23]<br>プリティホワイトセーラー</div>
-          <span class="cardbase card-W-S23"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S23"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S24]<br>シトラスイエロー・フロリナ</div>
-          <span class="cardbase card-W-S24"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S24"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S25]<br>ローズコサージュドレス（ブルー）</div>
-          <span class="cardbase card-W-S25"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S25"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S26]<br>プリンアラモードエプロン</div>
-          <span class="cardbase card-W-S26"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S26"></div>
+            <div class="card-back cardback-34"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S27]<br>パピーこまち（すいか）</div>
-          <span class="cardbase card-W-S27"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S27"></div>
+            <div class="card-back cardback-35"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S28]<br>ハイランドプリンセス</div>
-          <span class="cardbase card-W-S28"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S28"></div>
+            <div class="card-back cardback-35"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S29]<br>ガーガーレインコート</div>
-          <span class="cardbase card-W-S29"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S29"></div>
+            <div class="card-back cardback-37"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S30]<br>じょうねつアンダルシア（オレンジ）</div>
-          <span class="cardbase card-W-S30"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S30"></div>
+            <div class="card-back cardback-37"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S31]<br>ローゼン・キューピット</div>
-          <span class="cardbase card-W-S31"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S31"></div>
+            <div class="card-back cardback-37"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[W-S32]<br>ヒミツのかぎフリル</div>
-          <span class="cardbase card-W-S32"></span>
+          <div class="card-flipper">
+            <div class="card-front card-W-S32"></div>
+            <div class="card-back cardback-35"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -959,234 +1507,405 @@
       <div class="card-grid">
         <div class="card">
           <div class="card-title">[A-001]<br>おしゃれデニムキャスケット</div>
-          <span class="cardbase card-A-001"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-001"></div>
+            <div class="card-back cardback-20"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-002]<br>ピンクリボンコサージュ</div>
-          <span class="cardbase card-A-002"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-002"></div>
+            <div class="card-back cardback-20"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-003]<br>カッパきぐるみぃ</div>
-          <span class="cardbase card-A-003"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-003"></div>
+            <div class="card-back cardback-20"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-004]<br>B系シルバークロス</div>
-          <span class="cardbase card-A-004"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-004"></div>
+            <div class="card-back cardback-20"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-005]<br>オータムエレガンスマフラー</div>
-          <span class="cardbase card-A-005"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-005"></div>
+            <div class="card-back cardback-20"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-006]<br>オレンジクリスタルバンダナ</div>
-          <span class="cardbase card-A-006"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-006"></div>
+            <div class="card-back cardback-29"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-007]<br>アクティブメッシュキャップ</div>
-          <span class="cardbase card-A-007"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-007"></div>
+            <div class="card-back cardback-29"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-008]<br>パール＆ピンクサファイア</div>
-          <span class="cardbase card-A-008"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-008"></div>
+            <div class="card-back cardback-29"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-009]<br>サンバ・デ・ブルースカイ</div>
-          <span class="cardbase card-A-009"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-009"></div>
+            <div class="card-back cardback-29"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-010]<br>フェアリー・バタフライ</div>
-          <span class="cardbase card-A-010"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-010"></div>
+            <div class="card-back cardback-26"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-011]<br>サンバ・デ・サンシャイン</div>
-          <span class="cardbase card-A-011"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-011"></div>
+            <div class="card-back cardback-29"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-012]<br>かみなりアフロ</div>
-          <span class="cardbase card-A-012"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-012"></div>
+            <div class="card-back cardback-31"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-013]<br>パイナップル・エンジェル</div>
-          <span class="cardbase card-A-013"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-013"></div>
+            <div class="card-back cardback-31"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-014]<br>パンダきぐるみぃ</div>
-          <span class="cardbase card-A-014"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-014"></div>
+            <div class="card-back cardback-31"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-015]<br>トゥインクル・スター</div>
-          <span class="cardbase card-A-015"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-015"></div>
+            <div class="card-back cardback-28"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-016]<br>たれみみパイロットキャップ</div>
-          <span class="cardbase card-A-016"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-016"></div>
+            <div class="card-back cardback-31"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-017]<br>おひめさまティアラ</div>
-          <span class="cardbase card-A-017"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-017"></div>
+            <div class="card-back cardback-31"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-018]<br>フォトジェニック★アイドル</div>
-          <span class="cardbase card-A-018"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-018"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-019]<br>リボンレースヘッドドレス</div>
-          <span class="cardbase card-A-019"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-019"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-020]<br>クールボーダーニットキャップ</div>
-          <span class="cardbase card-A-020"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-020"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-021]<br>ティアドロップ・アクアマリン</div>
-          <span class="cardbase card-A-021"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-021"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-022]<br>ぐっすりナイトキャップ</div>
-          <span class="cardbase card-A-022"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-022"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-023]<br>わくわくサポーターマフラー</div>
-          <span class="cardbase card-A-023"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-023"></div>
+            <div class="card-back cardback-46"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-024]<br>ペンギンきぐるみぃ</div>
-          <span class="cardbase card-A-024"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-024"></div>
+            <div class="card-back cardback-46"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-025]<br>コーデュロイ×ファーキャップ</div>
-          <span class="cardbase card-A-025"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-025"></div>
+            <div class="card-back cardback-46"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-026]<br>うきうきメロディバンダナ</div>
-          <span class="cardbase card-A-026"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-026"></div>
+            <div class="card-back cardback-44"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-027]<br>りんごキルトキャスケット</div>
-          <span class="cardbase card-A-027"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-027"></div>
+            <div class="card-back cardback-44"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-028]<br>プルメリアコサージュ</div>
-          <span class="cardbase card-A-028"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-028"></div>
+            <div class="card-back cardback-44"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-029]<br>モーモーテンガロンハット</div>
-          <span class="cardbase card-A-029"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-029"></div>
+            <div class="card-back cardback-47"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-030]<br>ローズ＆ベルベットチョーカー</div>
-          <span class="cardbase card-A-030"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-030"></div>
+            <div class="card-back cardback-47"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-031]<br>キューティープチデビル</div>
-          <span class="cardbase card-A-031"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-031"></div>
+            <div class="card-back cardback-42"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-032]<br>ガーリーチューリップハット</div>
-          <span class="cardbase card-A-032"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-032"></div>
+            <div class="card-back cardback-47"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-033]<br>スペース・ウォーカー</div>
-          <span class="cardbase card-A-033"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-033"></div>
+            <div class="card-back cardback-40"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-034]<br>マーガレットツインリボン</div>
-          <span class="cardbase card-A-034"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-034"></div>
+            <div class="card-back cardback-46"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-035]<br>ハッピークローバースカーフ</div>
-          <span class="cardbase card-A-035"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-035"></div>
+            <div class="card-back cardback-46"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-036]<br>フルーツフル・チェーン</div>
-          <span class="cardbase card-A-036"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-036"></div>
+            <div class="card-back cardback-46"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-037]<br>フォトジェニック■アイドル</div>
-          <span class="cardbase card-A-037"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-037"></div>
+            <div class="card-back cardback-46"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-038]<br>はるいろドットカチューシャ</div>
-          <span class="cardbase card-A-038"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-038"></div>
+            <div class="card-back cardback-46"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-039]<br>ロイヤルエメラルドティアラ</div>
-          <span class="cardbase card-A-039"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-039"></div>
+            <div class="card-back cardback-47"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-040]<br>Bガールサングラス</div>
-          <span class="cardbase card-A-040"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-040"></div>
+            <div class="card-back cardback-47"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-041]<br>アラビアンムーン</div>
-          <span class="cardbase card-A-041"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-041"></div>
+            <div class="card-back cardback-47"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-042]<br>ひつじきぐるみぃ</div>
-          <span class="cardbase card-A-042"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-042"></div>
+            <div class="card-back cardback-47"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-043]<br>ドリーミング・ドルフィン</div>
-          <span class="cardbase card-A-043"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-043"></div>
+            <div class="card-back cardback-47"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-044]<br>あでやかひめカツラ</div>
-          <span class="cardbase card-A-044"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-044"></div>
+            <div class="card-back cardback-47"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-045]<br>なまいきパイレーツバンダナ</div>
-          <span class="cardbase card-A-045"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-045"></div>
+            <div class="card-back cardback-20"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-046]<br>フラワーガーデンプリンセス</div>
-          <span class="cardbase card-A-046"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-046"></div>
+            <div class="card-back cardback-26"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-047]<br>キラキラ★ロゴキャップ</div>
-          <span class="cardbase card-A-047"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-047"></div>
+            <div class="card-back cardback-28"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-048]<br>あじさいコサージュ</div>
-          <span class="cardbase card-A-048"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-048"></div>
+            <div class="card-back cardback-29"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-049]<br>マリンボーダー・ハンチング</div>
-          <span class="cardbase card-A-049"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-049"></div>
+            <div class="card-back cardback-31"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-050]<br>ちょこっとシルクハット</div>
-          <span class="cardbase card-A-050"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-050"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-051]<br>きょうりゅうきぐるみぃ</div>
-          <span class="cardbase card-A-051"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-051"></div>
+            <div class="card-back cardback-43"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-052]<br>マハラジャリボンスカーフ</div>
-          <span class="cardbase card-A-052"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-052"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-053]<br>ポンポンコサージュ</div>
-          <span class="cardbase card-A-053"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-053"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-054]<br>アジアン・ビューティー</div>
-          <span class="cardbase card-A-054"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-054"></div>
+            <div class="card-back cardback-45"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-055]<br>クレマチスかんざし</div>
-          <span class="cardbase card-A-055"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-055"></div>
+            <div class="card-back cardback-20"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-S01]<br>ハイランドプリンセス</div>
-          <span class="cardbase card-A-S01"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-S01"></div>
+            <div class="card-back cardback-26"></div>
+          </div>
         </div>
         <div class="card">
           <div class="card-title">[A-S02]<br>ローゼン・キューピット</div>
-          <span class="cardbase card-A-S02"></span>
+          <div class="card-flipper">
+            <div class="card-front card-A-S02"></div>
+            <div class="card-back cardback-31"></div>
+          </div>
         </div>
       </div>
     </div>
-
+  </div>
 </body>
 </html>
